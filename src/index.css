@@ -1,11 +1,13 @@
-*,html,body{
+*,
+html,
+body {
   box-sizing: border-box;
   /*margin: 0;*/
 }
 
-.color{
-  color: rgba(5, 5, 5, 0.801);
+.color {
+  color: #020202e8;
 }
-.link{
+.link {
   padding: 5px;
 }
