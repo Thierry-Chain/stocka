@@ -8,23 +8,68 @@ import {
   Input,
   Button,
   Select,
+  useToast,
+  Spinner,
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { InfoOutlineIcon } from '@chakra-ui/icons'
-import { useState } from 'react'
-export default function SignUp() {
-  const [Email, setEmail] = useState('')
-  const [Passcode, setPasscode] = useState('')
-  const [Passcode2, setPasscode2] = useState('')
-  const [Phone, setPhone] = useState('')
-  const [UserName, setUserName] = useState('')
-  const [Gender, setGender] = useState('')
+import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { useMutation } from 'react-query'
+import { signUp, clearErrors } from 'Redux/actions'
+export default function SignUp(props) {
+  const showRegToast = useSelector((state) => state.user.showRegToast)
+  const userError = useSelector((state) => state.user.error)
+  const auth = useSelector((state) => state.user.auth)
 
+  const dispatch = useDispatch()
+  const [email, setEmail] = useState('')
+  const [passcode, setPasscode] = useState('')
+  const [passcode2, setPasscode2] = useState('')
+  const [phone, setPhone] = useState('')
+  const [userName, setUserName] = useState('')
+  const [gender, setGender] = useState('')
+  const toast = useToast()
+  const { isLoading, mutateAsync } = useMutation(signUp)
   const handleSubmit = (e) => {
     e.preventDefault()
-    alert(`${Email} ${Passcode} ${Gender} ${UserName} ${Passcode2} ${Phone}`)
+
+    const vars = {
+      username: userName,
+      email,
+      phone,
+      password: passcode,
+      confirmPassword: passcode2,
+      role: 'USER',
+      gender,
+    }
+    mutateAsync(vars)
   }
 
+  useEffect(() => {
+    if (showRegToast) {
+      toast({
+        title: 'Account created.',
+        description: "We've created your account for you so log in",
+        status: 'success',
+        position: 'top',
+        duration: 3000,
+        isClosable: true,
+      })
+      props.history.push('/login')
+    }
+  }, [showRegToast, toast, props, auth])
+  useEffect(() => {
+    if (userError)
+      toast({
+        title: 'Account not created.',
+        description: userError,
+        status: 'error',
+        position: 'top',
+        duration: 3000,
+        isClosable: true,
+      })
+  }, [userError, toast])
   return (
     <Container h="full">
       <Text
@@ -42,9 +87,9 @@ export default function SignUp() {
             <FormControl mx="auto" isRequired>
               <FormLabel>Username</FormLabel>
               <Input
-                value={UserName}
+                value={userName}
                 onChange={(e) => setUserName(e.target.value)}
-                name="UserName"
+                name="userName"
                 border="2px"
                 w="95%"
                 type="text"
@@ -54,7 +99,7 @@ export default function SignUp() {
               <FormLabel>Gender</FormLabel>
               <Select
                 onChange={(e) => setGender(e.target.value)}
-                name="Gender"
+                name="gender"
                 w="95%"
                 placeholder="...."
                 isRequired
@@ -66,9 +111,9 @@ export default function SignUp() {
             <FormControl mx="auto" isRequired>
               <FormLabel>Phone number</FormLabel>
               <Input
-                value={Phone}
+                value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                name="Phone"
+                name="phone"
                 border="2px"
                 w="95%"
                 type="tel"
@@ -77,9 +122,9 @@ export default function SignUp() {
             <FormControl mx="auto" isRequired>
               <FormLabel>Email address</FormLabel>
               <Input
-                value={Email}
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                name="Email"
+                name="email"
                 border="2px"
                 w="95%"
                 type="email"
@@ -89,9 +134,9 @@ export default function SignUp() {
             <FormControl mx="auto" isRequired>
               <FormLabel>Password</FormLabel>
               <Input
-                value={Passcode}
+                value={passcode}
                 onChange={(e) => setPasscode(e.target.value)}
-                name="Passcode"
+                name="passcode"
                 placeholder="Enter password"
                 border="2px"
                 w="95%"
@@ -101,9 +146,9 @@ export default function SignUp() {
             <FormControl mx="auto" isRequired>
               <FormLabel>confirm</FormLabel>
               <Input
-                value={Passcode2}
+                value={passcode2}
                 onChange={(e) => setPasscode2(e.target.value)}
-                name="Passcode2"
+                name="passcode2"
                 border="2px"
                 w="95%"
                 placeholder="Confirm password"
@@ -120,8 +165,14 @@ export default function SignUp() {
                 Already registered click here
               </Text>
             </Link>
-            <Button w="50%" mx="auto" bg="gray.500" type="submit">
-              Register
+            <Button
+              onClick={() => dispatch(clearErrors())}
+              w="50%"
+              mx="auto"
+              bg="gray.500"
+              type="submit"
+            >
+              {isLoading ? <Spinner color="cyan.900" size="md" /> : 'Register'}
             </Button>
           </Flex>
         </form>

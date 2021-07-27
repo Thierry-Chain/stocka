@@ -7,6 +7,7 @@ import SignUp from 'components/SignUp'
 import About from 'components/About'
 import HomeLoggedIn from 'components/loggedIn/HomeLoggedIn'
 import ErrorPage from 'components/ErrorPage'
+import ForgetPassword from 'components/ForgetPassword'
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/signup" component={SignUp} />
           <Route path="/about" component={About} />
           <Route path="/loggedIn" component={HomeLoggedIn} />
+          <Route path="/reset" component={ForgetPassword} />
           <Route path="/*" component={ErrorPage} />
         </Switch>
       </Flex>

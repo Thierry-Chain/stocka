@@ -38,8 +38,8 @@ export default function Home() {
           and is has cross support in devices{' '}
         </Text>
       </Box>
-      <Box m="0" p="0" minW="full">
-        <Image src={crossImage} />
+      <Box h={['40vh', '52vh', '65vh']} m="0" p="0" minW="full">
+        <Image h="inherit" minW="full" w="inherit" src={crossImage} />
       </Box>
       <Flex flexDir="column">
         <Text

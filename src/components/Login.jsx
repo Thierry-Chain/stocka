@@ -18,6 +18,7 @@ import { useState, useEffect } from 'react'
 import { login, clearErrors } from 'Redux/actions'
 import { useMutation } from 'react-query'
 import { useSelector, useDispatch } from 'react-redux'
+
 export default function Login(props) {
   const [Email, setEmail] = useState('')
   const [Passcode, setPasscode] = useState('')
@@ -81,10 +82,10 @@ export default function Login(props) {
                 type="password"
               />
             </FormControl>
-            <Link to="/signup">
+            <Link to="/reset">
               <Text _hover={{ textDecoration: 'underline' }} textAlign="center">
                 <InfoOutlineIcon mx="2" />
-                Not registered click here
+                Forgot password click here
               </Text>
             </Link>
             <Button
