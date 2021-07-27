@@ -26,7 +26,7 @@ export default function About() {
         Stock Management System
       </Text>
 
-      <Box color="blue.900" rounded="xl" shadow="xl" m="3" p="2">
+      <Box color="blue.900" rounded="xl" shadow="md" m="3" p="2">
         <Text
           textAlign="center"
           fontSize="md"
@@ -84,7 +84,6 @@ export default function About() {
         Other Applications <Badge bg="pink.400">Best</Badge>:
       </Text>
       <SimpleGrid
-        hm={['auto', '21vh']}
         overflow="auto"
         columns={['2', '3', '3']}
         spacing={['1', '10']}
@@ -96,7 +95,7 @@ export default function About() {
         </Box>
 
         <Box shadow="2xl" rounded="xl" h={['27vh', '19vh']} m="2">
-          <Link isExternal href="https://lit-ravine-7205.herokuapp.com">
+          <Link isExternal href="https://stflibrary.herokuapp.com">
             <Image w="95%" h="100%" mx="auto" src={library} />
           </Link>
         </Box>

@@ -5,6 +5,7 @@ import Home from 'components/Home'
 import Login from 'components/Login'
 import SignUp from 'components/SignUp'
 import About from 'components/About'
+import HomeLoggedIn from 'components/loggedIn/HomeLoggedIn'
 import ErrorPage from 'components/ErrorPage'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
           <Route path="/about" component={About} />
+          <Route path="/loggedIn" component={HomeLoggedIn} />
           <Route path="/*" component={ErrorPage} />
         </Switch>
       </Flex>

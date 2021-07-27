@@ -32,6 +32,7 @@ export default function Footer() {
   return (
     <Box as="footer" bg="#020202e8" h="auto" py="4">
       <Text
+        display={['none', 'block']}
         fontWeight="bold"
         fontSize="larger"
         bgGradient="linear(to-l,blue.300,blue.600)"
@@ -80,16 +81,18 @@ export default function Footer() {
                   placeholder="Type email"
                 />
               </FormControl>
-              <Textarea
-                my="2"
-                w="95%"
-                value={message}
-                onChange={(e) => {
-                  setMessage(e.target.value)
-                }}
-                mx="auto"
-                placeholder="Type your message here"
-              />
+              <FormControl mx="auto" w="95%" isRequired>
+                <Textarea
+                  my="2"
+                  w="95%"
+                  value={message}
+                  onChange={(e) => {
+                    setMessage(e.target.value)
+                  }}
+                  mx="auto"
+                  placeholder="Type your message here"
+                />{' '}
+              </FormControl>
               <Button
                 my="2"
                 w={['null', '60%']}

@@ -7,17 +7,35 @@ import {
   FormLabel,
   Input,
   Button,
+  Spinner,
+  Alert,
+  AlertIcon,
+  AlertTitle,
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { InfoOutlineIcon } from '@chakra-ui/icons'
-import { useState } from 'react'
-export default function Login() {
+import { useState, useEffect } from 'react'
+import { login, clearErrors } from 'Redux/actions'
+import { useMutation } from 'react-query'
+import { useSelector, useDispatch } from 'react-redux'
+export default function Login(props) {
   const [Email, setEmail] = useState('')
   const [Passcode, setPasscode] = useState('')
+  const UserError = useSelector((state) => state.user.error)
+  const auth = useSelector((state) => state.user.auth)
+  const { mutateAsync, status } = useMutation(login)
+  const dispatch = useDispatch()
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (auth) {
+      props.history.push('/loggedIn')
+    }
+  }, [auth, props])
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    alert(`${Email} ${Passcode}`)
+    const data = { email: Email, password: Passcode }
+    await mutateAsync(data)
+    // alert(`${Email} ${Passcode}`)
   }
   return (
     <Container h="100vh">
@@ -32,6 +50,12 @@ export default function Login() {
         Login stock
       </Text>
       <Box shadow="2xl" rounded="lg" color="blue.900" p="2">
+        {UserError ? (
+          <Alert status="error">
+            <AlertIcon />
+            <AlertTitle mr={2}>{UserError}</AlertTitle>
+          </Alert>
+        ) : null}
         <form onSubmit={handleSubmit}>
           <Flex flexDirection="column">
             <FormControl mx="auto" p="3" id="email" isRequired>
@@ -63,8 +87,19 @@ export default function Login() {
                 Not registered click here
               </Text>
             </Link>
-            <Button w="50%" mx="auto" bg="gray.500" type="submit" my="3">
-              Go
+            <Button
+              onClick={() => dispatch(clearErrors())}
+              w="50%"
+              mx="auto"
+              bg="gray.400"
+              type="submit"
+              my="3"
+            >
+              {status === 'loading' ? (
+                <Spinner color="cyan.900" size="md" />
+              ) : (
+                'Go'
+              )}
             </Button>
           </Flex>
         </form>
