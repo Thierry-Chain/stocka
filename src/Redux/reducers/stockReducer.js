@@ -1,19 +1,22 @@
-import {REGISTER} from 'Redux/actionsTypes'
-const initState={
-   short_term:[],
-   long_term:[]
+import { SET_STOCK_ERROR, DEL_STOCK_ERROR } from 'Redux/actionsTypes'
+const initState = {
+  error: '',
 }
 
- const stockReducer=(state=initState,action)=>{
-    switch (action) {
-        case REGISTER:
-            return{
-                ...state
-             } 
-    
-        default:
-            return  state
-           
-    }
+const stockReducer = (state = initState, { type, payload }) => {
+  switch (type) {
+    case SET_STOCK_ERROR:
+      return {
+        ...state,
+        error: payload,
+      }
+    case DEL_STOCK_ERROR:
+      return {
+        ...state,
+        error: '',
+      }
+    default:
+      return state
+  }
 }
 export default stockReducer

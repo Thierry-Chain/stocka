@@ -4,17 +4,19 @@ import {
   CLEAR_ERRORS,
   SIGNUP_PASS,
   OFF_SHOW_REGTOAST,
+  LOGOUT,
 } from 'Redux/actionsTypes'
-
 const cached = localStorage.getItem('client')
 const initObj = {
   auth: false,
   client: {},
   error: '',
   showRegToast: false,
+  notify: [],
 }
 
 const initState = cached ? JSON.parse(cached) : initObj
+
 const userReducer = (state = initState, { type, payload }) => {
   switch (type) {
     case LOGIN_PASS:
@@ -23,6 +25,7 @@ const userReducer = (state = initState, { type, payload }) => {
         auth: true,
         client,
         error: '',
+        notify: [],
       }
     case USER_ERROR:
       return {
@@ -45,8 +48,18 @@ const userReducer = (state = initState, { type, payload }) => {
         ...state,
         showRegToast: false,
       }
+    case LOGOUT:
+      return {
+        auth: false,
+        client: {},
+        error: '',
+        showRegToast: false,
+        notify: [],
+      }
+
     default:
       return state
   }
 }
+
 export default userReducer

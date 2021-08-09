@@ -8,6 +8,10 @@ import About from 'components/About'
 import HomeLoggedIn from 'components/loggedIn/HomeLoggedIn'
 import ErrorPage from 'components/ErrorPage'
 import ForgetPassword from 'components/ForgetPassword'
+import Stock from 'components/loggedIn/Stock'
+import Records from 'components/loggedIn/Records'
+import Control from 'components/loggedIn/Control'
+import Payment from 'components/loggedIn/Payment'
 
 function App() {
   return (
@@ -21,7 +25,6 @@ function App() {
       <Flex bg="#020202" overflow="auto" w={['100vw', '100vw', '25%']}>
         <NavBar />
       </Flex>
-
       <Flex
         bg="#e0dbdb83"
         w={['100vw', '100vw', '75%']}
@@ -33,8 +36,12 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
           <Route path="/about" component={About} />
-          <Route path="/loggedIn" component={HomeLoggedIn} />
+          <Route exact path="/loggedIn" component={HomeLoggedIn} />
           <Route path="/reset" component={ForgetPassword} />
+          <Route path="/loggedIn/stock" component={Stock} />
+          <Route path="/loggedIn/pay" component={Payment} />
+          <Route path="/loggedIn/records" component={Records} />
+          <Route path="/loggedIn/control" component={Control} />
           <Route path="/*" component={ErrorPage} />
         </Switch>
       </Flex>

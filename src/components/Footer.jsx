@@ -19,10 +19,12 @@ import {
   EmailIcon,
 } from '@chakra-ui/icons'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 export default function Footer() {
   const [email, setEmail] = useState('')
   const [userName, setUserName] = useState('')
   const [message, setMessage] = useState('')
+  const auth = useSelector((state) => state.user.auth)
   const date = new Date()
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -42,6 +44,7 @@ export default function Footer() {
       >
         Stock management system
       </Text>
+
       <SimpleGrid columns={[1, 2]}>
         <Flex
           flexDirection="column"
@@ -123,17 +126,17 @@ export default function Footer() {
           <Box h="1" w="50%" py="1" mx="auto" />
           <Flex justifyContent="space-between">
             <VStack ml="auto" mr="2">
-              <Link to="/login">
+              <Link to={auth ? '/loggedIn/stock' : '/login'}>
                 <BellIcon />
-                Login
+                {auth ? 'My stock' : 'Login'}
               </Link>
-              <Link to="/signup">
+              <Link to={auth ? '/loggedIn/records' : '/signup'}>
                 <BellIcon />
-                Signup
+                {auth ? 'Records' : 'Signup'}
               </Link>
-              <Link to="/about">
+              <Link to={auth ? '/loggedIn/pay' : '/about'}>
                 <BellIcon />
-                About
+                {auth ? 'Payment' : 'About'}
               </Link>
             </VStack>
             <Divider orientation="vertical" p="2" />
@@ -160,6 +163,17 @@ export default function Footer() {
           </Text>
         </Flex>
       </SimpleGrid>
+      <Text
+        display={['none', 'block']}
+        fontWeight="bold"
+        fontSize="larger"
+        bgGradient="linear(to-l,blue.300,blue.600)"
+        bgClip="text"
+        textAlign="center"
+        p="3"
+      >
+        Call for support (+250784405833)
+      </Text>
     </Box>
   )
 }

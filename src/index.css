@@ -6,8 +6,9 @@ body {
 }
 
 .color {
-  color: #020202e8;
+  color: rgb(153, 8, 8);
 }
+
 .link {
   padding: 5px;
 }

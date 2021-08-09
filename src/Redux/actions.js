@@ -1,5 +1,13 @@
 import { GraphQLClient } from 'graphql-request'
-import { loginQuery, signUpQuery } from 'Redux/graphql/queries'
+import {
+  loginQuery,
+  signUpQuery,
+  getShortTermProdQuery,
+  getLongTermProdQuery,
+  payStateQuery,
+  getNotifiedQuery,
+  delNotifyQuery,
+} from 'Redux/graphql/queries'
 import store from 'Redux/store'
 import {
   LOGIN_PASS,
@@ -7,31 +15,43 @@ import {
   CLEAR_ERRORS,
   SIGNUP_PASS,
   OFF_SHOW_REGTOAST,
+  LOGOUT,
 } from './actionsTypes'
+import { getEndPoint } from 'constants/index'
+const endPoint = getEndPoint()
 
-const endPoint = 'http://localhost:4000'
 const client = new GraphQLClient(endPoint, {
-  headers: { 'Content-Type': 'application/json' },
+  headers: { Auth: '' },
 })
+const cached = localStorage.getItem('client')
+if (cached) {
+  const token = JSON.parse(cached).client.token
+  client.setHeader('Authorization', `Bearer ${token}`)
+}
+const setAuthHeaders = (token) => {
+  client.setHeader('Authorization', `Bearer ${token}`)
+}
 const handleNetworkError = (err) => {
   store.dispatch(userError(err))
   setTimeout(() => {
     window.location.reload()
   }, 500)
 }
+const logoutSolution = (error2) => {
+  store.dispatch(userError(error2))
+  logout()
+  window.location.reload()
+}
 const resolveErrors = (error1, error2) => {
   error1
     ? handleNetworkError('Network Error')
     : error2
-    ? store.dispatch(userError(error2))
-    : console.error('Unepected')
-}
-const setAuthHeaders = (token) => {
-  client.setHeader('Authorization', token)
+    ? logoutSolution(error2)
+    : console.error('Unexpected')
 }
 
 const login = (vars) => {
-  client
+  return client
     .request(loginQuery(), vars)
     .then((res) => {
       const reduxClient = res.LoginClient.client
@@ -44,7 +64,7 @@ const login = (vars) => {
       const error1 = error?.message.startsWith('Network')
       const error2 = error?.response?.errors[0]?.message
 
-      resolveErrors(error1, error2)
+      error1 ? resolveErrors(null, error2) : store.dispatch(userError(error2))
     })
 }
 const userError = (err) => {
@@ -61,6 +81,7 @@ const loginPass = (reduxClient) => {
       client: reduxClient,
       error: '',
       showRegToast: '',
+      notify: [],
     })
   )
   return {
@@ -80,7 +101,7 @@ const signUpPass = () => {
   }
 }
 const signUp = (vars) => {
-  client
+  return client
     .request(signUpQuery, vars)
     .then(() => {
       store.dispatch(clearErrors())
@@ -90,13 +111,9 @@ const signUp = (vars) => {
       }, 3000)
     })
     .catch((error) => {
-      /*console.log('nooh boss', { error })
-         console.warn(error)*/
-
       const error1 = error?.message.startsWith('Network')
       const error2 = error?.response?.errors[0]?.message
-
-      resolveErrors(error1, error2)
+      error1 ? resolveErrors(null, error2) : store.dispatch(userError(error2))
     })
 }
 const offShowToast = () => {
@@ -104,4 +121,83 @@ const offShowToast = () => {
     type: OFF_SHOW_REGTOAST,
   }
 }
-export { login, loginPass, clearErrors, signUpPass, signUp, offShowToast }
+const logout = () => {
+  localStorage.clear()
+  return {
+    type: LOGOUT,
+  }
+}
+const getShortTermProd = (vars) => {
+  return client
+    .request(getShortTermProdQuery, vars.queryKey[1])
+    .then((resp) => {
+      return resp
+    })
+    .catch((error) => {
+      const error1 = error?.message.startsWith('Network')
+      const error2 = error?.response?.errors[0]?.message
+
+      resolveErrors(error1, error2)
+    })
+}
+const getLongTermProd = (vars) => {
+  return client
+    .request(getLongTermProdQuery, vars.queryKey[1])
+    .then((resp) => {
+      return resp
+    })
+    .catch((error) => {
+      const error1 = error?.message.startsWith('Network')
+      const error2 = error?.response?.errors[0]?.message
+
+      resolveErrors(error1, error2)
+    })
+}
+const getPayStatus = (vars) => {
+  return client
+    .request(payStateQuery, vars.queryKey[1])
+    .then((resp) => {
+      return resp.PaymentStatus
+    })
+    .catch((error) => {
+      const error1 = error?.message.startsWith('Network')
+      const error2 = error?.response?.errors[0]?.message
+
+      resolveErrors(error1, error2)
+    })
+}
+
+const getNotified = (vars) => {
+  return client
+    .request(getNotifiedQuery, vars.queryKey[1])
+    .then((resp) => {
+      return resp.Notifications
+    })
+    .catch((error) => {
+      const error1 = error?.message.startsWith('Network')
+      const error2 = error?.response?.errors[0]?.message
+
+      resolveErrors(error1, error2)
+    })
+}
+const delNotify = (vars) => {
+  return client.request(delNotifyQuery, vars).catch((err) => {
+    console.log(err)
+  })
+}
+export {
+  login,
+  loginPass,
+  clearErrors,
+  signUpPass,
+  signUp,
+  offShowToast,
+  getShortTermProd,
+  logout,
+  getLongTermProd,
+  getPayStatus,
+  getNotified,
+  delNotify,
+  client,
+  logoutSolution,
+}
