@@ -234,7 +234,7 @@ export default function HomeLoggedIn(props) {
               </AccordionButton>
             </h2>
             <AccordionPanel bg="gray.50" pb={4}>
-              how to start
+              you start by
             </AccordionPanel>
           </AccordionItem>
 
