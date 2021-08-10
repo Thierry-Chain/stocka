@@ -51,21 +51,36 @@ function ProductDetails({ onClose, isOpen, product }) {
               {product.dateOfExpry ? (
                 <Text>Expiry :{moment(product.dateOfExpry).format('L')}</Text>
               ) : null}
-              <Text>Price per unit :{product.pricePerUnit}</Text>
+              {!product.recordId ? (
+                <Text>Price per unit : {product.pricePerUnit}</Text>
+              ) : null}
+              {product.recordId ? (
+                <Text>Type :{product.productType}</Text>
+              ) : null}
+              {product.recordId ? (
+                <Text>
+                  Sold on :{moment(product.dateRecorded).format('L')}{' '}
+                </Text>
+              ) : null}
+              {product.recordId ? (
+                <Text>Selling Price :{numberSpacer(product.sellingPrice)}</Text>
+              ) : null}
               <Text>Description :{product.description}</Text>
 
-              <Button
-                onClick={() => {
-                  onOpen2()
-                  setSelected(product)
-                }}
-                size="sm"
-                my="3"
-                colorScheme="blue"
-                variant="outline"
-              >
-                <EditIcon /> Edit
-              </Button>
+              {!product.recordId ? (
+                <Button
+                  onClick={() => {
+                    onOpen2()
+                    setSelected(product)
+                  }}
+                  size="sm"
+                  my="3"
+                  colorScheme="blue"
+                  variant="outline"
+                >
+                  <EditIcon /> Edit
+                </Button>
+              ) : null}
             </Box>
           </ModalBody>
           <ModalFooter bg="gray.50">

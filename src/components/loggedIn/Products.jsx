@@ -74,53 +74,81 @@ export default function Products({
         py="2"
         rounded="md"
         _hover={{ shadow: 'outline' }}
-        key={product.productId}
+        key={product.productId || product.recordId}
       >
         <Text color="telegram.600">Name :{product.name} </Text>
         <Text>Amount :{`${product.amount} pcs`} </Text>
         <Text>Buying Price :{numberSpacer(product.buyingPrice)} </Text>
-        <Text>Entered on :{moment(product.dateOfEntry).format('L')} </Text>
+        {product.recordId ? (
+          <Text>Selling Price :{numberSpacer(product.sellingPrice)}</Text>
+        ) : null}
+
+        {product.recordId ? (
+          <Text>Sold on :{moment(product.dateRecorded).format('L')} </Text>
+        ) : null}
+        {!product.recordId ? (
+          <Text>Entered on :{moment(product.dateOfEntry).format('L')} </Text>
+        ) : null}
+
         {product.dateOfExpry ? (
           <Text>Expry on :{moment(product.dateOfExpry).format('L')} </Text>
         ) : null}
-        <Flex>
-          <Button
-            size="sm"
-            onClick={() => {
-              onOpen2()
-              setProduct(product)
-            }}
-            colorScheme="blue"
-            variant="outline"
-          >
-            <EditIcon /> Track
-          </Button>
-          <Spacer />
 
-          <Button
-            onClick={() => {
-              onOpen1()
-              setProduct(product)
-            }}
-            size="sm"
-            colorScheme="red"
-            variant="outline"
-          >
-            <DeleteIcon /> Del
-          </Button>
-          <Spacer />
-          <Button
-            onClick={() => {
-              onOpen()
-              setProduct(product)
-            }}
-            size="sm"
-            colorScheme="teal"
-            variant="outline"
-          >
-            <UnlockIcon /> More
-          </Button>
-        </Flex>
+        {!product.recordId ? (
+          <Flex>
+            <Button
+              size="sm"
+              onClick={() => {
+                onOpen2()
+                setProduct(product)
+              }}
+              colorScheme="blue"
+              variant="outline"
+            >
+              <EditIcon /> Track
+            </Button>
+            <Spacer />
+
+            <Button
+              onClick={() => {
+                onOpen1()
+                setProduct(product)
+              }}
+              size="sm"
+              colorScheme="red"
+              variant="outline"
+            >
+              <DeleteIcon /> Del
+            </Button>
+            <Spacer />
+            <Button
+              onClick={() => {
+                onOpen()
+                setProduct(product)
+              }}
+              size="sm"
+              colorScheme="teal"
+              variant="outline"
+            >
+              <UnlockIcon /> More
+            </Button>
+          </Flex>
+        ) : (
+          <Flex>
+            <Button
+              onClick={() => {
+                onOpen()
+                setProduct(product)
+              }}
+              size="sm"
+              colorScheme="teal"
+              variant="outline"
+              mx="auto"
+            >
+              <UnlockIcon /> More
+            </Button>
+          </Flex>
+        )}
       </Flex>
     )
   })
