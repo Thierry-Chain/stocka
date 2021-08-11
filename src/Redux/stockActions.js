@@ -10,6 +10,7 @@ import {
   shortTermProdRecordsQuery,
   longTermProdRecordsQuery,
   deleteSelectedRecQuery,
+  addProdToRecordQuery,
 } from './graphql/queries'
 import store from 'Redux/store'
 
@@ -150,6 +151,17 @@ const delSelectedRec = (vars) => {
       solveError(error)
     })
 }
+const addProductToRecords = (vars) => {
+  store.dispatch(delError())
+  return client
+    .request(addProdToRecordQuery, vars)
+    .then((resp) => {
+      return resp.AddProductToRecord
+    })
+    .catch((error) => {
+      solveError(error)
+    })
+}
 export {
   setError,
   delError,
@@ -162,4 +174,5 @@ export {
   getLongTermRec,
   getShortTermRec,
   delSelectedRec,
+  addProductToRecords,
 }

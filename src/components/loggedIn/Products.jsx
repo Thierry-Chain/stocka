@@ -253,7 +253,12 @@ export default function Products({
       </Modal>
 
       <ProductDetails product={product} onClose={onClose} isOpen={isOpen} />
-      <AddToRecords isOpen={isOpen2} onClose={onClose2} product={product} />
+      <AddToRecords
+        clientId={clientId}
+        isOpen={isOpen2}
+        onClose={onClose2}
+        product={product}
+      />
       {!allProducts.length ? (
         <Box h={['47vh', '47vh', 'auto']}>
           <Alert status="info" my="5" rounded variant="left-accent">
