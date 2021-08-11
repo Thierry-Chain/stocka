@@ -33,14 +33,12 @@ export default function Records() {
   const [showShortRec, setShowShortRec] = useState(true)
   const [search, setSearch] = useState('')
   const { data: shortRec } = useQuery(
-    ['shortTermRec', { clientId }],
-    getShortTermRec,
-    { notifyOnChangeProps: ['data', 'error'] }
+    ['shortTermRecords', { clientId }],
+    getShortTermRec
   )
   const { data: longRec } = useQuery(
-    ['longTermRec', { clientId }],
-    getLongTermRec,
-    { notifyOnChangeProps: ['data', 'error'] }
+    ['longTermRecords', { clientId }],
+    getLongTermRec
   )
   const { data } = useQuery(['shortTermProd', { clientId }], getShortTermProd)
   const { data: data2 } = useQuery(

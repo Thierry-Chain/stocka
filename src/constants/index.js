@@ -7,7 +7,9 @@ const getEndPoint = () => {
 }
 const numberSpacer = (num) => {
   let init = ''
+  num = Math.round(num)
   num = String(num)
+
   for (const key in num) {
     if ((num.length - key - 1) % 3 === 2 && key > 0) {
       init = `${init},`
@@ -23,5 +25,12 @@ const calcTotal = (arr) => {
   })
   return tot
 }
-
-export { getEndPoint, numberSpacer, calcTotal }
+//sellingPrice
+const calcTotalSellingPrc = (arr) => {
+  let tot = 0
+  arr.map((data) => {
+    return (tot += data.sellingPrice)
+  })
+  return tot
+}
+export { getEndPoint, numberSpacer, calcTotal, calcTotalSellingPrc }

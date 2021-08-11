@@ -5,7 +5,9 @@ import {
   Flex,
   Container,
   SimpleGrid,
-  Image, Alert, AlertIcon
+  Image,
+  Alert,
+  AlertIcon,
 } from '@chakra-ui/react'
 import { BellIcon, QuestionIcon, AddIcon, InfoIcon } from '@chakra-ui/icons'
 import crossImage from 'assets/responsive.jpg'
@@ -35,7 +37,7 @@ export default function Home() {
         >
           <BellIcon color="blue.500" mx="2" fontSize="3xl" />
           Hey , welcome we helps you to manage your stock of goods in smart way
-          and is has cross support in devices{' '}
+          and it has cross support in devices{' '}
         </Text>
       </Box>
       <Box m="0" p="0" minW="full">
@@ -123,27 +125,25 @@ export default function Home() {
           p="2"
           mx="auto"
         >
-          <InfoIcon color="pink.400" mx="2" fontSize="3xl" /> What legends said :
+          <InfoIcon color="pink.400" mx="2" fontSize="3xl" /> What legends said
+          :
         </Text>
 
-        <Box mx="2" fontWeight="semibold" fontSize="large" >
-
-
+        <Box mx="2" fontWeight="semibold" fontSize="large">
           <Alert my="5" shadow="lg" bg="#9e9b9b34" variant="left-accent">
             <AlertIcon />
-      “One of the great responsibilities that I have is to manage my assets wisely, so that they create value.”
-
-By Alice Walton
-    </Alert>
+            “One of the great responsibilities that I have is to manage my
+            assets wisely, so that they create value.” By Alice Walton
+          </Alert>
 
           <Alert my="5" shadow="lg" bg="#9e9b9b34" variant="left-accent">
-            <AlertIcon /> “Know what you own, and know why you own it.”
-By Peter Lynch
-         </Alert>
+            <AlertIcon /> “Know what you own, and know why you own it.” By Peter
+            Lynch
+          </Alert>
           <Alert my="5" shadow="lg" bg="#9e9b9b34" variant="left-accent">
-            <AlertIcon /> “Observe your information and make right decision.”
-By Peter Lynch
-         </Alert>
+            <AlertIcon /> “Observe your information and make right decision.” By
+            Peter Lynch
+          </Alert>
         </Box>
       </Box>
       <Text

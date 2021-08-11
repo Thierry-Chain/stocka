@@ -85,7 +85,7 @@ function Notify({ notify }) {
                               <Text as="span" fontWeight="semibold">
                                 on
                               </Text>{' '}
-                              {moment(notification.createdAt).format('L')}
+                              {moment(notification.createdAt).format('l')}
                             </Box>{' '}
                           </Box>
                         </Flex>

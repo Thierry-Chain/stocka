@@ -77,7 +77,7 @@ export default function HomeLoggedIn(props) {
     data3 && data4 ? shortOutput + longOutput : <Spinner size="xs" />
 
   const endOfPremium = payState ? (
-    moment(payState.expryDate).format('L')
+    moment(payState.expryDate).format('l')
   ) : (
     <Spinner size="xs" />
   )

@@ -297,6 +297,15 @@ const longTermProdRecordsQuery = gql`
     }
   }
 `
+const deleteSelectedRecQuery = gql`
+  mutation($records: [ID!]!, $clientId: ID!) {
+    DeleteSelectedRecords(records: $records, clientId: $clientId) {
+      success
+      message
+      deletedRecords
+    }
+  }
+`
 export {
   loginQuery,
   signUpQuery,
@@ -314,4 +323,5 @@ export {
   delLongProdQuery,
   shortTermProdRecordsQuery,
   longTermProdRecordsQuery,
+  deleteSelectedRecQuery,
 }

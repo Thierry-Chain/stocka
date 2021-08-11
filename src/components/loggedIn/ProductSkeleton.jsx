@@ -13,49 +13,49 @@ export default function ProductSkeleton() {
         <Stack>
           <SkeletonText mt="4" noOfLines={4} spacing="4" />
           <SimpleGrid columns={3} spacing={2}>
-            <Skeleton h="20px" />
-            <Skeleton h="20px" />
-            <Skeleton h="20px" />
+            <Skeleton h="32px" />
+            <Skeleton h="32px" />
+            <Skeleton h="32px" />
           </SimpleGrid>
         </Stack>
         <Stack>
           <SkeletonText mt="4" noOfLines={4} spacing="4" />
           <SimpleGrid columns={3} spacing={2}>
-            <Skeleton h="20px" />
-            <Skeleton h="20px" />
-            <Skeleton h="20px" />
+            <Skeleton h="32px" />
+            <Skeleton h="32px" />
+            <Skeleton h="32px" />
           </SimpleGrid>
         </Stack>
         <Stack>
           <SkeletonText mt="4" noOfLines={4} spacing="4" />
           <SimpleGrid columns={3} spacing={2}>
-            <Skeleton h="20px" />
-            <Skeleton h="20px" />
-            <Skeleton h="20px" />
+            <Skeleton h="32px" />
+            <Skeleton h="32px" />
+            <Skeleton h="32px" />
           </SimpleGrid>
         </Stack>
         <Stack d={['none', 'inline']}>
           <SkeletonText mt="4" noOfLines={4} spacing="4" />
           <SimpleGrid columns={3} spacing={2}>
-            <Skeleton h="20px" />
-            <Skeleton h="20px" />
-            <Skeleton h="20px" />
+            <Skeleton h="32px" />
+            <Skeleton h="32px" />
+            <Skeleton h="32px" />
           </SimpleGrid>
         </Stack>
         <Stack d={['none', 'inline']}>
           <SkeletonText mt="4" noOfLines={4} spacing="4" />
           <SimpleGrid columns={3} spacing={2}>
-            <Skeleton h="20px" />
-            <Skeleton h="20px" />
-            <Skeleton h="20px" />
+            <Skeleton h="32px" />
+            <Skeleton h="32px" />
+            <Skeleton h="32px" />
           </SimpleGrid>
         </Stack>
         <Stack d={['none', 'inline']}>
           <SkeletonText mt="4" noOfLines={4} spacing="4" />
           <SimpleGrid columns={3} spacing={2}>
-            <Skeleton h="20px" />
-            <Skeleton h="20px" />
-            <Skeleton h="20px" />
+            <Skeleton h="32px" />
+            <Skeleton h="32px" />
+            <Skeleton h="32px" />
           </SimpleGrid>
         </Stack>
       </SimpleGrid>

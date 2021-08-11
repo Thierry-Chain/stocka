@@ -47,23 +47,24 @@ function ProductDetails({ onClose, isOpen, product }) {
               <Text>Name :{product.name}</Text>
               <Text>Amount :{product.amount}</Text>
               <Text>Buying price :{numberSpacer(product.buyingPrice)}</Text>
-              <Text>Entered :{moment(product.dateOfEntry).format('L')}</Text>
+              {product.recordId ? (
+                <Text>Selling Price :{numberSpacer(product.sellingPrice)}</Text>
+              ) : null}
+              <Text>Entered :{moment(product.dateOfEntry).format('l')}</Text>
               {product.dateOfExpry ? (
-                <Text>Expiry :{moment(product.dateOfExpry).format('L')}</Text>
+                <Text>Expiry :{moment(product.dateOfExpry).format('l')}</Text>
               ) : null}
               {!product.recordId ? (
                 <Text>Price per unit : {product.pricePerUnit}</Text>
               ) : null}
-              {product.recordId ? (
-                <Text>Type :{product.productType}</Text>
-              ) : null}
+
               {product.recordId ? (
                 <Text>
-                  Sold on :{moment(product.dateRecorded).format('L')}{' '}
+                  Sold on :{moment(product.dateRecorded).format('l')}{' '}
                 </Text>
               ) : null}
               {product.recordId ? (
-                <Text>Selling Price :{numberSpacer(product.sellingPrice)}</Text>
+                <Text>Type :{product.productType}</Text>
               ) : null}
               <Text>Description :{product.description}</Text>
 

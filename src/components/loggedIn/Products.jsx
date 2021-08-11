@@ -84,14 +84,14 @@ export default function Products({
         ) : null}
 
         {product.recordId ? (
-          <Text>Sold on :{moment(product.dateRecorded).format('L')} </Text>
+          <Text>Sold on :{moment(product.dateRecorded).format('l')} </Text>
         ) : null}
         {!product.recordId ? (
-          <Text>Entered on :{moment(product.dateOfEntry).format('L')} </Text>
+          <Text>Entered on :{moment(product.dateOfEntry).format('l')} </Text>
         ) : null}
 
         {product.dateOfExpry ? (
-          <Text>Expry on :{moment(product.dateOfExpry).format('L')} </Text>
+          <Text>Expry on :{moment(product.dateOfExpry).format('l')} </Text>
         ) : null}
 
         {!product.recordId ? (
