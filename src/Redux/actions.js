@@ -192,8 +192,10 @@ const updateCredentials = (vars) => {
   store.dispatch(clearErrors())
   return client
     .request(updateUserCredentialsQuery, vars)
-    .then(() => {
-      store.dispatch(login({ email: vars.email, password: vars.password }))
+    .then((resp) => {
+      const newClient = resp.UpdateCredentials
+      newClient.token = store.getState().user.client.token
+      store.dispatch(loginPass(newClient))
     })
     .catch((error) => {
       const error1 = error?.message.startsWith('Network')
