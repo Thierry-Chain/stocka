@@ -74,53 +74,81 @@ export default function Products({
         py="2"
         rounded="md"
         _hover={{ shadow: 'outline' }}
-        key={product.productId}
+        key={product.productId || product.recordId}
       >
         <Text color="telegram.600">Name :{product.name} </Text>
         <Text>Amount :{`${product.amount} pcs`} </Text>
         <Text>Buying Price :{numberSpacer(product.buyingPrice)} </Text>
-        <Text>Entered on :{moment(product.dateOfEntry).format('L')} </Text>
-        {product.dateOfExpry ? (
-          <Text>Expry on :{moment(product.dateOfExpry).format('L')} </Text>
+        {product.recordId ? (
+          <Text>Selling Price :{numberSpacer(product.sellingPrice)}</Text>
         ) : null}
-        <Flex>
-          <Button
-            size="sm"
-            onClick={() => {
-              onOpen2()
-              setProduct(product)
-            }}
-            colorScheme="blue"
-            variant="outline"
-          >
-            <EditIcon /> Track
-          </Button>
-          <Spacer />
 
-          <Button
-            onClick={() => {
-              onOpen1()
-              setProduct(product)
-            }}
-            size="sm"
-            colorScheme="red"
-            variant="outline"
-          >
-            <DeleteIcon /> Del
-          </Button>
-          <Spacer />
-          <Button
-            onClick={() => {
-              onOpen()
-              setProduct(product)
-            }}
-            size="sm"
-            colorScheme="teal"
-            variant="outline"
-          >
-            <UnlockIcon /> More
-          </Button>
-        </Flex>
+        {product.recordId ? (
+          <Text>Sold on :{moment(product.dateRecorded).format('l')} </Text>
+        ) : null}
+        {!product.recordId ? (
+          <Text>Entered on :{moment(product.dateOfEntry).format('l')} </Text>
+        ) : null}
+
+        {product.dateOfExpry ? (
+          <Text>Expry on :{moment(product.dateOfExpry).format('l')} </Text>
+        ) : null}
+
+        {!product.recordId ? (
+          <Flex>
+            <Button
+              size="sm"
+              onClick={() => {
+                onOpen2()
+                setProduct(product)
+              }}
+              colorScheme="blue"
+              variant="outline"
+            >
+              <EditIcon /> Track
+            </Button>
+            <Spacer />
+
+            <Button
+              onClick={() => {
+                onOpen1()
+                setProduct(product)
+              }}
+              size="sm"
+              colorScheme="red"
+              variant="outline"
+            >
+              <DeleteIcon /> Del
+            </Button>
+            <Spacer />
+            <Button
+              onClick={() => {
+                onOpen()
+                setProduct(product)
+              }}
+              size="sm"
+              colorScheme="teal"
+              variant="outline"
+            >
+              <UnlockIcon /> More
+            </Button>
+          </Flex>
+        ) : (
+          <Flex>
+            <Button
+              onClick={() => {
+                onOpen()
+                setProduct(product)
+              }}
+              size="sm"
+              colorScheme="teal"
+              variant="outline"
+              mx="auto"
+            >
+              <UnlockIcon /> More
+            </Button>
+          </Flex>
+        )}
       </Flex>
     )
   })
@@ -225,7 +253,12 @@ export default function Products({
       </Modal>
 
       <ProductDetails product={product} onClose={onClose} isOpen={isOpen} />
-      <AddToRecords isOpen={isOpen2} onClose={onClose2} product={product} />
+      <AddToRecords
+        clientId={clientId}
+        isOpen={isOpen2}
+        onClose={onClose2}
+        product={product}
+      />
       {!allProducts.length ? (
         <Box h={['47vh', '47vh', 'auto']}>
           <Alert status="info" my="5" rounded variant="left-accent">

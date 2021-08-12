@@ -297,6 +297,76 @@ const longTermProdRecordsQuery = gql`
     }
   }
 `
+const deleteSelectedRecQuery = gql`
+  mutation($records: [ID!]!, $clientId: ID!) {
+    DeleteSelectedRecords(records: $records, clientId: $clientId) {
+      success
+      message
+      deletedRecords
+    }
+  }
+`
+const updateUserCredentialsQuery = gql`
+  mutation(
+    $clientId: ID!
+    $username: String!
+    $email: String!
+    $phone: String!
+    $gender: String!
+    $password: String!
+  ) {
+    UpdateCredentials(
+      clientId: $clientId
+      username: $username
+      email: $email
+      phone: $phone
+      gender: $gender
+      password: $password
+    ) {
+      clientId
+      username
+      email
+      phone
+      role
+      active
+      gender
+      createdAt
+    }
+  }
+`
+const updatePasscodeQuery = gql`
+  mutation(
+    $clientId: ID!
+    $newPassword: String!
+    $oldPassword: String!
+    $confirmPassword: String!
+  ) {
+    UpdatePassword(
+      clientId: $clientId
+      oldPassword: $oldPassword
+      newPassword: $newPassword
+      confirmPassword: $confirmPassword
+    ) {
+      clientId
+      username
+      email
+      phone
+      role
+      active
+      gender
+      createdAt
+    }
+  }
+`
+const deleteAccQuery = gql`
+  mutation($clientId: ID!, $confirmPassword: String!) {
+    DeleteAccount(clientId: $clientId, confirmPassword: $confirmPassword) {
+      success
+      message
+      accountId
+    }
+  }
+`
 export {
   loginQuery,
   signUpQuery,
@@ -314,4 +384,8 @@ export {
   delLongProdQuery,
   shortTermProdRecordsQuery,
   longTermProdRecordsQuery,
+  deleteSelectedRecQuery,
+  updateUserCredentialsQuery,
+  updatePasscodeQuery,
+  deleteAccQuery,
 }

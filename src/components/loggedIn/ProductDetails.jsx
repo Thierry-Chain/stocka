@@ -47,25 +47,41 @@ function ProductDetails({ onClose, isOpen, product }) {
               <Text>Name :{product.name}</Text>
               <Text>Amount :{product.amount}</Text>
               <Text>Buying price :{numberSpacer(product.buyingPrice)}</Text>
-              <Text>Entered :{moment(product.dateOfEntry).format('L')}</Text>
-              {product.dateOfExpry ? (
-                <Text>Expiry :{moment(product.dateOfExpry).format('L')}</Text>
+              {product.recordId ? (
+                <Text>Selling Price :{numberSpacer(product.sellingPrice)}</Text>
               ) : null}
-              <Text>Price per unit :{product.pricePerUnit}</Text>
+              <Text>Entered :{moment(product.dateOfEntry).format('l')}</Text>
+              {product.dateOfExpry ? (
+                <Text>Expiry :{moment(product.dateOfExpry).format('l')}</Text>
+              ) : null}
+              {!product.recordId ? (
+                <Text>Price per unit : {product.pricePerUnit}</Text>
+              ) : null}
+
+              {product.recordId ? (
+                <Text>
+                  Sold on :{moment(product.dateRecorded).format('l')}{' '}
+                </Text>
+              ) : null}
+              {product.recordId ? (
+                <Text>Type :{product.productType}</Text>
+              ) : null}
               <Text>Description :{product.description}</Text>
 
-              <Button
-                onClick={() => {
-                  onOpen2()
-                  setSelected(product)
-                }}
-                size="sm"
-                my="3"
-                colorScheme="blue"
-                variant="outline"
-              >
-                <EditIcon /> Edit
-              </Button>
+              {!product.recordId ? (
+                <Button
+                  onClick={() => {
+                    onOpen2()
+                    setSelected(product)
+                  }}
+                  size="sm"
+                  my="3"
+                  colorScheme="blue"
+                  variant="outline"
+                >
+                  <EditIcon /> Edit
+                </Button>
+              ) : null}
             </Box>
           </ModalBody>
           <ModalFooter bg="gray.50">

@@ -77,7 +77,7 @@ export default function HomeLoggedIn(props) {
     data3 && data4 ? shortOutput + longOutput : <Spinner size="xs" />
 
   const endOfPremium = payState ? (
-    moment(payState.expryDate).format('L')
+    moment(payState.expryDate).format('l')
   ) : (
     <Spinner size="xs" />
   )
@@ -116,10 +116,10 @@ export default function HomeLoggedIn(props) {
               <Text display={['none', 'inline']}>Settings</Text>
             </MenuButton>
             <MenuList>
-              <MenuItem>User Info</MenuItem>
-              <MenuItem>Delete Records</MenuItem>
-              <MenuItem>Delete Notifications</MenuItem>
-              <MenuItem>Delete Products</MenuItem>
+              <Link to="/vip/userInfo">
+                <MenuItem>User Info</MenuItem>
+              </Link>
+
               <Link to="/loggedIn#tips">
                 <MenuItem>Help</MenuItem>
               </Link>

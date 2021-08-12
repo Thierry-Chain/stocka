@@ -42,6 +42,7 @@ export default function Stock() {
     getLongTermProd,
     { notifyOnChangeProps: ['data', 'error'] }
   )
+
   const shortProdNum = shortProd ? (
     shortProd.ShortTermProducts.length
   ) : (
@@ -62,6 +63,7 @@ export default function Stock() {
     ) : (
       <Spinner size="xs" />
     )
+
   const [showLongProd, setShowLongProd] = useState(true)
   const [showShortProd, setShowShortProd] = useState(true)
   const toBeDisplayed =
@@ -120,7 +122,7 @@ export default function Stock() {
             }}
             colorScheme="green"
           >
-            LongTermProduct({longProdNum})
+            LongTermProductRecord({longProdNum})
           </Switch>
           <Switch
             onChange={() => {
@@ -131,7 +133,7 @@ export default function Stock() {
             colorScheme="red"
             defaultIsChecked
           >
-            ShortTermProduct({shortProdNum})
+            ShortTermProductRecord({shortProdNum})
           </Switch>
         </Flex>
         <Box mx="auto">
@@ -149,6 +151,7 @@ export default function Stock() {
           </Button>
         </Box>
       </Flex>
+
       <HStack py="3">
         <Flex mx="auto" as="span">
           <InputGroup>
@@ -178,6 +181,7 @@ export default function Stock() {
           </InputGroup>
         </Flex>
       </HStack>
+
       {shortProd && longProd ? (
         <Products
           shortProd={showShortProd ? shortProd.ShortTermProducts : []}
@@ -192,6 +196,7 @@ export default function Stock() {
       ) : (
         <ProductSkeleton />
       )}
+
       {shortProd && longProd ? (
         <Flex>
           <Link to="/loggedIn/stock/#firstTitle">
@@ -225,6 +230,7 @@ export default function Stock() {
           </Link>
         </Flex>
       ) : null}
+
       <AddProduct isOpen={isOpen} onClose={onClose} />
     </Container>
   )
