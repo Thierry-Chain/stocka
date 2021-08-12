@@ -7,6 +7,9 @@ import {
   payStateQuery,
   getNotifiedQuery,
   delNotifyQuery,
+  updateUserCredentialsQuery,
+  deleteAccQuery,
+  updatePasscodeQuery,
 } from 'Redux/graphql/queries'
 import store from 'Redux/store'
 import {
@@ -185,6 +188,61 @@ const delNotify = (vars) => {
     console.log(err)
   })
 }
+const updateCredentials = (vars) => {
+  store.dispatch(clearErrors())
+  return client
+    .request(updateUserCredentialsQuery, vars)
+    .then(() => {
+      store.dispatch(login({ email: vars.email, password: vars.password }))
+    })
+    .catch((error) => {
+      const error1 = error?.message.startsWith('Network')
+      const error2 = error?.response?.errors[0]?.message
+
+      error1
+        ? handleNetworkError()
+        : error2
+        ? store.dispatch(userError(error2))
+        : logoutSolution(error2)
+    })
+}
+const updatePassword = (vars) => {
+  store.dispatch(clearErrors())
+  return client
+    .request(updatePasscodeQuery, vars)
+    .then((resp) => {
+      store.dispatch(userError('Done'))
+    })
+    .catch((error) => {
+      const error1 = error?.message.startsWith('Network')
+      const error2 = error?.response?.errors[0]?.message
+
+      error1
+        ? handleNetworkError()
+        : error2
+        ? store.dispatch(userError(error2))
+        : logoutSolution(error2)
+    })
+}
+const delAccount = (vars) => {
+  store.dispatch(clearErrors())
+  return client
+    .request(deleteAccQuery, vars)
+    .then((resp) => {
+      store.dispatch(logout())
+      window.location.reload()
+    })
+    .catch((error) => {
+      const error1 = error?.message.startsWith('Network')
+      const error2 = error?.response?.errors[0]?.message
+
+      error1
+        ? handleNetworkError()
+        : error2
+        ? store.dispatch(userError(error2))
+        : logoutSolution(error2)
+    })
+}
 export {
   login,
   loginPass,
@@ -192,6 +250,7 @@ export {
   signUpPass,
   signUp,
   offShowToast,
+  updatePassword,
   getShortTermProd,
   logout,
   getLongTermProd,
@@ -200,4 +259,6 @@ export {
   delNotify,
   client,
   logoutSolution,
+  delAccount,
+  updateCredentials,
 }
