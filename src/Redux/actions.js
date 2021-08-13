@@ -10,6 +10,8 @@ import {
   updateUserCredentialsQuery,
   deleteAccQuery,
   updatePasscodeQuery,
+  forgotPasswordQuery,
+  resetPasswordQuery,
 } from 'Redux/graphql/queries'
 import store from 'Redux/store'
 import {
@@ -245,8 +247,49 @@ const delAccount = (vars) => {
         : logoutSolution(error2)
     })
 }
+const forgotPassword = (vars) => {
+  store.dispatch(clearErrors())
+
+  return client
+    .request(forgotPasswordQuery, vars)
+    .then((resp) => {
+      return resp
+    })
+    .catch((error) => {
+      const error1 = error?.message.startsWith('Network')
+      const error2 = error?.response?.errors[0]?.message
+
+      error1
+        ? handleNetworkError()
+        : error2
+        ? store.dispatch(userError(error2))
+        : logoutSolution(error2)
+    })
+}
+const resetPassword = (vars) => {
+  store.dispatch(clearErrors())
+
+  return client
+    .request(resetPasswordQuery, vars)
+    .then((resp) => {
+      return resp
+    })
+    .catch((error) => {
+      console.log(error)
+      const error1 = error?.message.startsWith('Network')
+      // const error2 = error?.response?.errors[0]?.message
+      const error2 =
+        'Try again check your data and this link is used one time so you start again from zero'
+      error1
+        ? handleNetworkError()
+        : error2
+        ? store.dispatch(userError(error2))
+        : logoutSolution(error2)
+    })
+}
 export {
   login,
+  resetPassword,
   loginPass,
   clearErrors,
   signUpPass,
@@ -263,4 +306,5 @@ export {
   logoutSolution,
   delAccount,
   updateCredentials,
+  forgotPassword,
 }
