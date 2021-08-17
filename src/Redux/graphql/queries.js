@@ -367,17 +367,41 @@ const deleteAccQuery = gql`
     }
   }
 `
+const forgotPasswordQuery = gql`
+  query($email: String!) {
+    ForgotPassword(email: $email) {
+      success
+      email
+      message
+    }
+  }
+`
+const resetPasswordQuery = gql`
+  mutation($token: String!, $newPassword: String!, $confirmPassword: String!) {
+    ResetPassword(
+      token: $token
+      newPassword: $newPassword
+      confirmPassword: $confirmPassword
+    ) {
+      success
+      email
+      message
+    }
+  }
+`
 export {
   loginQuery,
   signUpQuery,
   getShortTermProdQuery,
   getLongTermProdQuery,
   payStateQuery,
+  forgotPasswordQuery,
   getNotifiedQuery,
   delNotifyQuery,
   addShortTermProdQuery,
   addLongTermProdQuery,
   editLongProdQuery,
+  resetPasswordQuery,
   editShortProdQuery,
   addProdToRecordQuery,
   delShortProdQuery,

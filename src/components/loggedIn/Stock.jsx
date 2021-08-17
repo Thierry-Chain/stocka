@@ -13,13 +13,10 @@ import {
   Switch,
   Spacer,
   useDisclosure,
+  Icon,
 } from '@chakra-ui/react'
-import {
-  SearchIcon,
-  AddIcon,
-  ArrowForwardIcon,
-  ArrowBackIcon,
-} from '@chakra-ui/icons'
+import { SearchIcon, ArrowForwardIcon, ArrowBackIcon } from '@chakra-ui/icons'
+import { AiOutlineFolderAdd } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { getShortTermProd, getLongTermProd } from 'Redux/actions'
 import { useQuery } from 'react-query'
@@ -145,7 +142,9 @@ export default function Stock() {
             px="1"
             onClick={onOpen}
             size="sm"
-            leftIcon={<AddIcon />}
+            leftIcon={
+              <Icon as={AiOutlineFolderAdd} fontSize="xl" fontWeight="bold" />
+            }
           >
             Add Product{' '}
           </Button>

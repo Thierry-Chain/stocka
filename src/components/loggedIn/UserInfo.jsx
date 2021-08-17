@@ -79,7 +79,15 @@ export default function UserInfo() {
         <SettingsIcon color="blue.800" /> All Settings
       </Text>
       <Text h="2" my="1" bg="telegram.300" mx="auto" w="14%" />
-      <Box id="simple">
+      <Box
+        border="1px"
+        borderColor="gray.300"
+        my="3"
+        shadow="lg"
+        py="3"
+        rounded="lg"
+        id="simple"
+      >
         <Container>
           <Text textAlign="center" fontWeight="semibold" color="blue.700">
             Update some user informations
@@ -134,7 +142,15 @@ export default function UserInfo() {
         </Container>
       </Box>
 
-      <Box id="middle">
+      <Box
+        border="1px"
+        borderColor="gray.300"
+        my="3"
+        shadow="lg"
+        py="3"
+        rounded="lg"
+        id="middle"
+      >
         <Container>
           <form onSubmit={updateCode}>
             <Text textAlign="center" fontWeight="semibold" color="blue.700">
@@ -171,7 +187,15 @@ export default function UserInfo() {
         </Container>
       </Box>
 
-      <Box id="advanced">
+      <Box
+        border="1px"
+        borderColor="gray.300"
+        my="3"
+        shadow="lg"
+        py="3"
+        rounded="lg"
+        id="advanced"
+      >
         <form onSubmit={delMyAccount}>
           <Container>
             <Text textAlign="center" fontWeight="semibold" color="blue.700">

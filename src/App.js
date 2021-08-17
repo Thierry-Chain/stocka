@@ -13,6 +13,7 @@ import Records from 'components/loggedIn/Records'
 import Control from 'components/loggedIn/Control'
 import Payment from 'components/loggedIn/Payment'
 import UserInfo from 'components/loggedIn/UserInfo'
+import ResetPassword from 'components/ResetPassword'
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/loggedIn/records" component={Records} />
           <Route path="/loggedIn/control" component={Control} />
           <Route path="/vip/userInfo" component={UserInfo} />
+          <Route path="/reset_password/:token" component={ResetPassword} />
           <Route path="/*" component={ErrorPage} />
         </Switch>
       </Flex>

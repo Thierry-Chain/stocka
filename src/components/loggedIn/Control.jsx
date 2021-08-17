@@ -23,6 +23,7 @@ import {
   ModalFooter,
   Select,
   useToast,
+  Icon,
 } from '@chakra-ui/react'
 import { ArrowBackIcon, ArrowForwardIcon, SearchIcon } from '@chakra-ui/icons'
 import Products from './Products'
@@ -39,7 +40,7 @@ import {
 import { calcTotal, numberSpacer, calcTotalSellingPrc } from 'constants/index'
 import moment from 'moment'
 import queryClient from 'index'
-
+import { AiOutlineFileSearch } from 'react-icons/ai'
 export default function Control(props) {
   const clientId = useSelector((state) => state.user.client.clientId)
   const [startKey, setStartKey] = useState(0)
@@ -47,9 +48,9 @@ export default function Control(props) {
   const [showLongRec, setShowLongRec] = useState(true)
   const [showShortRec, setShowShortRec] = useState(true)
   const [enableControl, setEnableControl] = useState(false)
-  const [from, setFrom] = useState('1')
+  const [from, setFrom] = useState('')
   const [to, setTo] = useState('')
-  const [year, setYear] = useState('2021')
+  const [year, setYear] = useState('')
   const [month, setMonth] = useState('')
   const [search, setSearch] = useState('')
   const [shortRecCont, setShortRecCont] = useState([])
@@ -238,7 +239,8 @@ export default function Control(props) {
             setEnableControl(false)
           }}
         >
-          Start
+          <Icon fontSize="xl" fontWeight="bolder" as={AiOutlineFileSearch} />
+          {'  '}Start
         </Button>
         {enableControl ? (
           <Button

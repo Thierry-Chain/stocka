@@ -17,8 +17,9 @@ import {
   useDisclosure,
   Input,
   Spinner,
+  Icon,
 } from '@chakra-ui/react'
-import { UnlockIcon, EditIcon, DeleteIcon } from '@chakra-ui/icons'
+import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import { numberSpacer } from 'constants/index'
 import ProductDetails from './ProductDetails'
 import { useState } from 'react'
@@ -28,6 +29,7 @@ import { delLongTermProd, delShortTermProd } from 'Redux/stockActions'
 import { useMutation } from 'react-query'
 import queryClient from 'index'
 import { useSelector } from 'react-redux'
+import { AiOutlineFileSync } from 'react-icons/ai'
 export default function Products({
   endKey,
   startKey,
@@ -130,7 +132,7 @@ export default function Products({
               colorScheme="teal"
               variant="outline"
             >
-              <UnlockIcon /> More
+              <Icon fontSize="xl" as={AiOutlineFileSync} /> More
             </Button>
           </Flex>
         ) : (
@@ -145,7 +147,7 @@ export default function Products({
               variant="outline"
               mx="auto"
             >
-              <UnlockIcon /> More
+              <Icon fontSize="xl" as={AiOutlineFileSync} /> More
             </Button>
           </Flex>
         )}

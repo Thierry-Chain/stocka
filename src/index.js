@@ -11,7 +11,7 @@ import store from 'Redux/store'
 
 const queryClient = new QueryClient({
   defaultOptions: {
-    queries: { refetchOnWindowFocus: 'always' },
+    queries: { refetchOnWindowFocus: true },
   },
 })
 const fetchDevTools = process.env.NODE_ENV === 'development' && (

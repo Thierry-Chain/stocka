@@ -6,12 +6,23 @@ import {
   Spacer,
   WrapItem,
   Avatar,
+  Icon,
 } from '@chakra-ui/react'
 import React from 'react'
-import { UnlockIcon, ArrowForwardIcon } from '@chakra-ui/icons'
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from 'Redux/actions'
+import {
+  AiTwotoneHome,
+  AiOutlineLogin,
+  AiOutlineAppstoreAdd,
+  AiOutlineUsergroupAdd,
+  AiOutlineHistory,
+  AiFillTags,
+  AiOutlineBarChart,
+  AiOutlineMoneyCollect,
+  AiOutlineLogout,
+} from 'react-icons/ai'
 export default function NavBar() {
   const auth = useSelector((state) => state.user.auth)
   const dispatch = useDispatch()
@@ -20,7 +31,13 @@ export default function NavBar() {
       <Flex py="2" _hover={{ bg: 'telegram.100', color: '#020201' }}>
         <NavLink className="link" to="/loggedIn/pay">
           {' '}
-          <UnlockIcon mr="2" display={['inline', 'none', 'inline']} />
+          <Icon
+            fontWeight="extrabold"
+            fontSize="xl"
+            as={AiOutlineMoneyCollect}
+            mr="2"
+            display={['inline', 'none', 'inline']}
+          />
           <Text display={['none', 'inline', 'inline']}>Payment</Text>
         </NavLink>
       </Flex>
@@ -72,13 +89,25 @@ export default function NavBar() {
         <Flex py="2" _hover={{ bg: 'telegram.100', color: '#020201' }}>
           <NavLink className="link" to={auth ? '/loggedIn' : '/'}>
             {' '}
-            <UnlockIcon mr="2" display={['inline', 'none', 'inline']} />
+            <Icon
+              fontWeight="extrabold"
+              fontSize="xl"
+              as={AiTwotoneHome}
+              mr="2"
+              display={['inline', 'none', 'inline']}
+            />
             <Text display={['none', 'inline', 'inline']}>Home</Text>
           </NavLink>
         </Flex>
         <Flex py="2" _hover={{ bg: 'telegram.100', color: '#020201' }}>
           <NavLink className="link" to={auth ? '/loggedIn/stock' : '/login'}>
-            <UnlockIcon mr="2" display={['inline', 'none', 'inline']} />
+            <Icon
+              fontWeight="extrabold"
+              fontSize="xl"
+              as={!auth ? AiOutlineLogin : AiOutlineAppstoreAdd}
+              mr="2"
+              display={['inline', 'none', 'inline']}
+            />
             <Text display={['none', 'inline', 'inline']}>
               {auth ? 'Stock' : 'Login'}
             </Text>
@@ -87,16 +116,28 @@ export default function NavBar() {
         <Flex py="2" _hover={{ bg: 'telegram.100', color: '#020201' }}>
           <NavLink className="link" to={auth ? '/loggedIn/records' : 'signup'}>
             {' '}
-            <UnlockIcon mr="2" display={['inline', 'none', 'inline']} />
+            <Icon
+              fontWeight="extrabold"
+              fontSize="xl"
+              as={!auth ? AiOutlineUsergroupAdd : AiOutlineHistory}
+              mr="2"
+              display={['inline', 'none', 'inline']}
+            />
             <Text display={['none', 'inline', 'inline']}>
               {auth ? 'Records' : 'SignUp'}
             </Text>
           </NavLink>
         </Flex>
         <Flex py="2" _hover={{ bg: 'telegram.100', color: '#020201' }}>
-          <NavLink className="link" to={auth ? "/loggedIn/control" : 'about'}>
+          <NavLink className="link" to={auth ? '/loggedIn/control' : 'about'}>
             {' '}
-            <UnlockIcon mr="2" display={['inline', 'none', 'inline']} />
+            <Icon
+              fontWeight="extrabold"
+              fontSize="xl"
+              as={!auth ? AiFillTags : AiOutlineBarChart}
+              mr="2"
+              display={['inline', 'none', 'inline']}
+            />
             <Text display={['none', 'inline', 'inline']}>
               {auth ? 'Control' : 'About'}
             </Text>
@@ -108,7 +149,7 @@ export default function NavBar() {
       <Flex display={['none', 'none', 'inline']} my={[null, '1', '2']}>
         <NavLink to={auth ? '/' : '/signup'}>
           <Button
-            rightIcon={<ArrowForwardIcon />}
+            rightIcon={<AiOutlineLogout fontWeight="bold" />}
             colorScheme="teal"
             variant="outline"
             onClick={() => dispatch(logout())}
