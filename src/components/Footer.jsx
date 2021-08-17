@@ -8,18 +8,26 @@ import {
   Input,
   VStack,
   Divider,
+  Icon,
   Textarea,
   Button,
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import {
-  BellIcon,
-  ExternalLinkIcon,
-  CopyIcon,
-  EmailIcon,
-} from '@chakra-ui/icons'
+import { ExternalLinkIcon, EmailIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import {
+  AiFillGithub,
+  AiOutlineLogin,
+  AiOutlineAppstoreAdd,
+  AiOutlineUsergroupAdd,
+  AiOutlineHistory,
+  AiFillTags,
+  AiOutlineMail,
+  AiFillCopyrightCircle,
+  AiOutlineMoneyCollect,
+  AiOutlineTwitter,
+} from 'react-icons/ai'
 export default function Footer() {
   const [email, setEmail] = useState('')
   const [userName, setUserName] = useState('')
@@ -127,15 +135,27 @@ export default function Footer() {
           <Flex justifyContent="space-between">
             <VStack ml="auto" mr="2">
               <Link to={auth ? '/loggedIn/stock' : '/login'}>
-                <BellIcon />
+                <Icon
+                  fontWeight="extrabold"
+                  fontSize="xl"
+                  as={auth ? AiOutlineAppstoreAdd : AiOutlineLogin}
+                />
                 {auth ? 'My stock' : 'Login'}
               </Link>
               <Link to={auth ? '/loggedIn/records' : '/signup'}>
-                <BellIcon />
+                <Icon
+                  fontWeight="extrabold"
+                  fontSize="xl"
+                  as={auth ? AiOutlineHistory : AiOutlineUsergroupAdd}
+                />
                 {auth ? 'Records' : 'Signup'}
               </Link>
               <Link to={auth ? '/loggedIn/pay' : '/about'}>
-                <BellIcon />
+                <Icon
+                  fontWeight="extrabold"
+                  fontSize="xl"
+                  as={auth ? AiOutlineMoneyCollect : AiFillTags}
+                />
                 {auth ? 'Payment' : 'About'}
               </Link>
             </VStack>
@@ -143,22 +163,30 @@ export default function Footer() {
 
             <VStack mr="auto" ml="2">
               <ChakraLink href="/github" isExternal>
-                <BellIcon />
+                <Icon fontWeight="extrabold" fontSize="xl" as={AiFillGithub} />
                 Github
               </ChakraLink>
               <ChakraLink href="/email" isExternal>
-                <BellIcon />
+                <Icon fontWeight="extrabold" fontSize="xl" as={AiOutlineMail} />
                 Email
               </ChakraLink>
               <ChakraLink href="/twitter" isExternal>
-                <BellIcon />
+                <Icon
+                  fontWeight="extrabold"
+                  fontSize="xl"
+                  as={AiOutlineTwitter}
+                />
                 Twitter
               </ChakraLink>
             </VStack>
           </Flex>
 
           <Text my="4" textAlign="center">
-            <CopyIcon />
+            <Icon
+              fontWeight="extrabold"
+              fontSize="xl"
+              as={AiFillCopyrightCircle}
+            />
             Copyright from 2021-{year}
           </Text>
         </Flex>
