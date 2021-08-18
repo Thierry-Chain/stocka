@@ -9,8 +9,10 @@ const rootReducer = combineReducers({
   stock: stockReducer,
   control: controlReducer,
 })
-const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+const fetchDevTools =
+  process.env.NODE_ENV === 'development'
+    ? window.__REDUX_DEVTOOLS_EXTENSION__ &&
+      window.__REDUX_DEVTOOLS_EXTENSION__()
+    : undefined
+const store = createStore(rootReducer, fetchDevTools)
 export default store

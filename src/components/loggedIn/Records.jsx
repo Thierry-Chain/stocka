@@ -24,7 +24,7 @@ import { useSelector } from 'react-redux'
 import { useQuery } from 'react-query'
 import { useState } from 'react'
 import { getLongTermRec, getShortTermRec } from 'Redux/stockActions'
-import { calcTotal, numberSpacer } from 'constants/index'
+import { calcTotal, numberSpacer, calcTotalSellingPrc } from 'constants/index'
 export default function Records() {
   const clientId = useSelector((state) => state.user.client.clientId)
   const [startKey, setStartKey] = useState(0)
@@ -45,8 +45,8 @@ export default function Records() {
     ['longTermProd', { clientId }],
     getLongTermProd
   )
-  const shortOutput = shortRec ? calcTotal(shortRec) : 0
-  const longOutput = longRec ? calcTotal(longRec) : 0
+  const shortOutput = shortRec ? calcTotalSellingPrc(shortRec) : 0
+  const longOutput = longRec ? calcTotalSellingPrc(longRec) : 0
   const output =
     shortRec && longRec ? (
       numberSpacer(shortOutput + longOutput)

@@ -34,7 +34,7 @@ import { getLongTermRec, getShortTermRec } from 'Redux/stockActions'
 import { useQuery } from 'react-query'
 import Notify from './Notify'
 import { logout, getPayStatus, getNotified } from 'Redux/actions'
-import { numberSpacer, calcTotal } from 'constants/index'
+import { numberSpacer, calcTotal, calcTotalSellingPrc } from 'constants/index'
 import moment from 'moment'
 import CheckUp from './CheckUp'
 export default function HomeLoggedIn(props) {
@@ -70,8 +70,8 @@ export default function HomeLoggedIn(props) {
     ['getPayStatus', { clientId }],
     getPayStatus
   )
-  const shortOutput = data4 ? calcTotal(data4) : 0
-  const longOutput = data3 ? calcTotal(data3) : 0
+  const shortOutput = data4 ? calcTotalSellingPrc(data4) : 0
+  const longOutput = data3 ? calcTotalSellingPrc(data3) : 0
 
   const output =
     data3 && data4 ? shortOutput + longOutput : <Spinner size="xs" />
@@ -234,7 +234,9 @@ export default function HomeLoggedIn(props) {
               </AccordionButton>
             </h2>
             <AccordionPanel bg="gray.50" pb={4}>
-              you start by
+              Firstly you must select startDate and endDate and Month then click
+              on Start button then you will be shown products sold/bought in
+              that selected period of time and profit or loss
             </AccordionPanel>
           </AccordionItem>
 

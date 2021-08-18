@@ -162,7 +162,7 @@ export default function Footer() {
             <Divider orientation="vertical" p="2" />
 
             <VStack mr="auto" ml="2">
-              <ChakraLink href="/github" isExternal>
+              <ChakraLink href="https://github.com/Thierry-Chain" isExternal>
                 <Icon fontWeight="extrabold" fontSize="xl" as={AiFillGithub} />
                 Github
               </ChakraLink>
@@ -170,7 +170,7 @@ export default function Footer() {
                 <Icon fontWeight="extrabold" fontSize="xl" as={AiOutlineMail} />
                 Email
               </ChakraLink>
-              <ChakraLink href="/twitter" isExternal>
+              <ChakraLink href="https://twitter/Thierry-Chain" isExternal>
                 <Icon
                   fontWeight="extrabold"
                   fontSize="xl"
