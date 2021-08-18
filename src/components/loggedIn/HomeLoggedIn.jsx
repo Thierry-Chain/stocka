@@ -66,7 +66,7 @@ export default function HomeLoggedIn(props) {
   const longInput = data2 ? calcTotal(data2.LongTermProducts) : 0
   const input =
     data && data2 ? numberSpacer(shortInput + longInput) : <Spinner size="xs" />
-  const { data: payState } = useQuery(
+  const { data: payState, isLoading } = useQuery(
     ['getPayStatus', { clientId }],
     getPayStatus
   )
@@ -74,14 +74,18 @@ export default function HomeLoggedIn(props) {
   const longOutput = data3 ? calcTotalSellingPrc(data3) : 0
 
   const output =
-    data3 && data4 ? shortOutput + longOutput : <Spinner size="xs" />
+    data3 && data4 ? (
+      numberSpacer(shortOutput + longOutput)
+    ) : (
+      <Spinner size="sm" />
+    )
 
   const endOfPremium = payState ? (
     moment(payState.expryDate).format('l')
   ) : (
     <Spinner size="xs" />
   )
-  const refund = payState ? payState.refund : null
+  const refund = payState ? payState.refund : <Spinner size="sm" />
 
   const { data: notify } = useQuery(['getNotified', { clientId }], getNotified)
 
@@ -162,16 +166,14 @@ export default function HomeLoggedIn(props) {
         <Box textAlign="center" py="1">
           Output :{' '}
           <Text as="span" lineHeight="tall" fontWeight="bolder">
-            {numberSpacer(output)}
+            {output}
           </Text>
         </Box>
         <Box textAlign="center" py="1">
           Refund :{' '}
-          <Text
-            as="span"
-            lineHeight="tall"
-            fontWeight="bolder"
-          >{`${refund} Rwf`}</Text>
+          <Text as="span" lineHeight="tall" fontWeight="bolder">
+            {isLoading ? <Spinner size="sm" /> : `${refund} Rwf`}
+          </Text>
         </Box>
         <Box textAlign="center" py="1">
           End of premium:{endOfPremium}
