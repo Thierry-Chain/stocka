@@ -32,6 +32,7 @@ function App() {
         w={['100vw', '100vw', '75%']}
         h="auto"
         overflow="auto"
+        minH="88vh"
       >
         <Switch>
           <Route exact path="/" component={Home} />
