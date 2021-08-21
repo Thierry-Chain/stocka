@@ -23,6 +23,7 @@ import {
   AiOutlineMoneyCollect,
   AiOutlineLogout,
 } from 'react-icons/ai'
+import logo from 'assets/logo.jpg'
 export default function NavBar() {
   const auth = useSelector((state) => state.user.auth)
   const dispatch = useDispatch()
@@ -52,7 +53,7 @@ export default function NavBar() {
     >
       <Flex my="2" ml="0.5" direction={['row', 'column']} py="1" mx="auto">
         <WrapItem display={['none', 'inline']}>
-          <Avatar mt={[null, '-1.5', null]} src="#" />
+          <Avatar mt={[null, '-1.5', null]} src={logo} />
         </WrapItem>
         <Text
           as="big"
