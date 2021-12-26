@@ -2,7 +2,7 @@ import { gql } from 'graphql-request'
 
 const loginQuery = () => {
   return gql`
-    query($email: String!, $password: String!) {
+    query ($email: String!, $password: String!) {
       LoginClient(email: $email, password: $password) {
         token
         client {
@@ -19,7 +19,7 @@ const loginQuery = () => {
   `
 }
 const signUpQuery = gql`
-  mutation(
+  mutation (
     $username: String!
     $email: String!
     $phone: String!
@@ -46,7 +46,7 @@ const signUpQuery = gql`
   }
 `
 const getShortTermProdQuery = gql`
-  query($clientId: ID!) {
+  query ($clientId: ID!) {
     ShortTermProducts(clientId: $clientId) {
       productId
       name
@@ -60,7 +60,7 @@ const getShortTermProdQuery = gql`
   }
 `
 const getLongTermProdQuery = gql`
-  query($clientId: ID!) {
+  query ($clientId: ID!) {
     LongTermProducts(clientId: $clientId) {
       productId
       name
@@ -73,7 +73,7 @@ const getLongTermProdQuery = gql`
   }
 `
 const payStateQuery = gql`
-  query($clientId: ID!) {
+  query ($clientId: ID!) {
     PaymentStatus(clientId: $clientId) {
       paid
       expryDate
@@ -82,24 +82,35 @@ const payStateQuery = gql`
   }
 `
 const getNotifiedQuery = gql`
-  query($clientId: ID!) {
+  query ($clientId: ID!) {
     Notifications(clientId: $clientId) {
       notificationId
       source
       message
       createdAt
+      destination {
+        __typename
+        ... on Destination {
+          destination
+        }
+        ... on Client {
+          clientId
+          username
+          email
+        }
+      }
     }
   }
 `
 const delNotifyQuery = gql`
-  mutation($clientId: ID!, $notificationId: ID!) {
+  mutation ($clientId: ID!, $notificationId: ID!) {
     DeleteNotification(clientId: $clientId, notificationId: $notificationId) {
       success
     }
   }
 `
 const addShortTermProdQuery = gql`
-  mutation(
+  mutation (
     $buyingPrice: Float!
     $name: String!
     $amount: Float!
@@ -130,7 +141,7 @@ const addShortTermProdQuery = gql`
   }
 `
 const addLongTermProdQuery = gql`
-  mutation(
+  mutation (
     $name: String!
     $buyingPrice: Float!
     $amount: Float!
@@ -157,7 +168,7 @@ const addLongTermProdQuery = gql`
   }
 `
 const editLongProdQuery = gql`
-  mutation(
+  mutation (
     $name: String!
     $buyingPrice: Float!
     $amount: Float!
@@ -186,7 +197,7 @@ const editLongProdQuery = gql`
   }
 `
 const editShortProdQuery = gql`
-  mutation(
+  mutation (
     $buyingPrice: Float!
     $name: String!
     $amount: Float!
@@ -218,7 +229,7 @@ const editShortProdQuery = gql`
   }
 `
 const delLongProdQuery = gql`
-  mutation($clientId: ID!, $productId: ID!, $sellingPrice: Float!) {
+  mutation ($clientId: ID!, $productId: ID!, $sellingPrice: Float!) {
     DeleteLongTermProduct(
       clientId: $clientId
       productId: $productId
@@ -231,7 +242,7 @@ const delLongProdQuery = gql`
   }
 `
 const delShortProdQuery = gql`
-  mutation($clientId: ID!, $productId: ID!, $sellingPrice: Float!) {
+  mutation ($clientId: ID!, $productId: ID!, $sellingPrice: Float!) {
     DeleteShortTermProduct(
       clientId: $clientId
       productId: $productId
@@ -244,7 +255,7 @@ const delShortProdQuery = gql`
   }
 `
 const addProdToRecordQuery = gql`
-  mutation(
+  mutation (
     $name: String!
     $sellingPrice: Float!
     $productType: String!
@@ -268,7 +279,7 @@ const addProdToRecordQuery = gql`
   }
 `
 const shortTermProdRecordsQuery = gql`
-  query($clientId: ID!) {
+  query ($clientId: ID!) {
     ShortTermProductRecords(clientId: $clientId) {
       recordId
       name
@@ -283,7 +294,7 @@ const shortTermProdRecordsQuery = gql`
   }
 `
 const longTermProdRecordsQuery = gql`
-  query($clientId: ID!) {
+  query ($clientId: ID!) {
     LongTermProductRecords(clientId: $clientId) {
       recordId
       name
@@ -298,7 +309,7 @@ const longTermProdRecordsQuery = gql`
   }
 `
 const deleteSelectedRecQuery = gql`
-  mutation($records: [ID!]!, $clientId: ID!) {
+  mutation ($records: [ID!]!, $clientId: ID!) {
     DeleteSelectedRecords(records: $records, clientId: $clientId) {
       success
       message
@@ -307,7 +318,7 @@ const deleteSelectedRecQuery = gql`
   }
 `
 const updateUserCredentialsQuery = gql`
-  mutation(
+  mutation (
     $clientId: ID!
     $username: String!
     $email: String!
@@ -335,7 +346,7 @@ const updateUserCredentialsQuery = gql`
   }
 `
 const updatePasscodeQuery = gql`
-  mutation(
+  mutation (
     $clientId: ID!
     $newPassword: String!
     $oldPassword: String!
@@ -359,7 +370,7 @@ const updatePasscodeQuery = gql`
   }
 `
 const deleteAccQuery = gql`
-  mutation($clientId: ID!, $confirmPassword: String!) {
+  mutation ($clientId: ID!, $confirmPassword: String!) {
     DeleteAccount(clientId: $clientId, confirmPassword: $confirmPassword) {
       success
       message
@@ -368,7 +379,7 @@ const deleteAccQuery = gql`
   }
 `
 const forgotPasswordQuery = gql`
-  query($email: String!) {
+  query ($email: String!) {
     ForgotPassword(email: $email) {
       success
       email
@@ -377,7 +388,7 @@ const forgotPasswordQuery = gql`
   }
 `
 const resetPasswordQuery = gql`
-  mutation($token: String!, $newPassword: String!, $confirmPassword: String!) {
+  mutation ($token: String!, $newPassword: String!, $confirmPassword: String!) {
     ResetPassword(
       token: $token
       newPassword: $newPassword
