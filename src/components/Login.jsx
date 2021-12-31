@@ -61,6 +61,7 @@ export default function Login(props) {
         id="cont"
       >
         <Box
+          display={['none', 'initial']}
           pos="absolute"
           h="10rem"
           w="10rem"

@@ -103,23 +103,23 @@ export default function About() {
       </Text>
       <SimpleGrid
         overflow="auto"
-        columns={['2', '3', '3']}
+        columns={['1', '2', '3']}
         spacing={['1', '10']}
       >
         <Box shadow="2xl" rounded="xl" h={['27vh', '19vh']} m="2">
           <Link isExternal href="https://smart-library-rw.herokuapp.com">
-            <Image w="95%" h="100%" mx="auto" src={library} />
+            <Image w="70%" h="70%" mx="auto" src={library} />
           </Link>
         </Box>
 
         <Box shadow="2xl" rounded="xl" h={['27vh', '19vh']} m="2">
           <Link isExternal href="https://stflibrary.herokuapp.com">
-            <Image w="95%" h="100%" mx="auto" src={library} />
+            <Image w="70%" h="70%" mx="auto" src={library} />
           </Link>
         </Box>
         <Box shadow="2xl" rounded="xl" h={['27vh', '19vh']} m="2">
-          <Link isExternal href="#">
-            <Image w="95%" h="100%" mx="auto" src={other} />
+          <Link href="#">
+            <Image w="70%" h="70%" mx="auto" src={other} />
           </Link>
         </Box>
       </SimpleGrid>
