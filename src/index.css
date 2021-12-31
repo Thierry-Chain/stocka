@@ -12,3 +12,10 @@ body {
 .link {
   padding: 5px;
 }
+.null {
+  color: #b6c7ce21;
+}
+#cont {
+  backdrop-filter: blur(50rem);
+  -webkit-backdrop-filter: blur(20rem);
+}

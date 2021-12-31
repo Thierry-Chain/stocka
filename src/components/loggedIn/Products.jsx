@@ -74,9 +74,11 @@ export default function Products({
         shadow="dark-lg"
         px="1"
         py="2"
+        mr="2"
         rounded="md"
         _hover={{ shadow: 'outline' }}
         key={product.productId || product.recordId}
+        bgGradient="linear(to-br,#dbdbdbba,rgb(255 255 255 / 85%))"
       >
         <Text color="telegram.600">Name :{product.name} </Text>
         <Text>Amount :{`${product.amount} pcs`} </Text>
@@ -162,7 +164,7 @@ export default function Products({
         onClose1()
         setSellingPrice('')
       },
-    }
+    },
   )
   const { mutateAsync: delLongtProd, isLoading: isLoading2 } = useMutation(
     delLongTermProd,
@@ -172,7 +174,7 @@ export default function Products({
         onClose1()
         setSellingPrice('')
       },
-    }
+    },
   )
   const clientId = useSelector((state) => state.user.client.clientId)
   const handleSubmit = (e) => {

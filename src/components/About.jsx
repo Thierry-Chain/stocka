@@ -38,7 +38,15 @@ export default function About() {
         </Text>
       </Box>
 
-      <Box mx="auto" shadow="2xl" border w={['94%', '80%']} my="3" py="5">
+      <Box
+        position="relative"
+        mx="auto"
+        shadow="2xl"
+        border
+        w={['94%', '80%']}
+        my="3"
+        py="5"
+      >
         <Text
           textAlign="center"
           fontSize="md"
@@ -70,7 +78,17 @@ export default function About() {
           <AddIcon color="blue.700" mx="2" fontSize="md" /> Helps in deciosion
           making
         </Text>
+        <Box
+          pos="absolute"
+          h="10rem"
+          w="10rem"
+          rounded="50%"
+          right="-4rem"
+          bottom="-4rem"
+          bgGradient="linear(to-l,#588ca24a,#26202000)"
+        />
       </Box>
+
       <Text
         fontWeight="bold"
         fontSize="larger"

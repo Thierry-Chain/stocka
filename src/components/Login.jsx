@@ -39,7 +39,7 @@ export default function Login(props) {
     // alert(`${Email} ${Passcode}`)
   }
   return (
-    <Container h="100vh">
+    <Container h="100vh" zIndex="3">
       <Text
         fontWeight="bold"
         fontSize="larger"
@@ -50,7 +50,26 @@ export default function Login(props) {
       >
         Login stock
       </Text>
-      <Box shadow="2xl" rounded="lg" color="blue.900" p="2">
+      <Box
+        // bgGradient="linear(to-t,#e0dbdb69,#e0dbdb23)"
+        shadow="2xl"
+        rounded="lg"
+        color="blue.900"
+        p="2"
+        zIndex="3"
+        pos="relative"
+        id="cont"
+      >
+        <Box
+          pos="absolute"
+          h="10rem"
+          w="10rem"
+          rounded="50%"
+          right="-4rem"
+          zIndex="-3"
+          bottom="-4rem"
+          bgGradient="linear(to-l,#588ca280,#d5d1d126)"
+        />
         {UserError ? (
           <Alert status="error">
             <AlertIcon />
@@ -58,7 +77,7 @@ export default function Login(props) {
           </Alert>
         ) : null}
         <form onSubmit={handleSubmit}>
-          <Flex flexDirection="column">
+          <Flex zIndex="3" flexDirection="column">
             <FormControl mx="auto" p="3" id="email" isRequired>
               <FormLabel>Email address</FormLabel>
               <Input

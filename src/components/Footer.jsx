@@ -67,19 +67,18 @@ export default function Footer() {
             Send Feedback/Advice
           </Text>
           <form onSubmit={handleSubmit}>
-            <Flex flexDir="column">
-              <FormControl w="80%" mx="auto" isRequired>
+            <Flex flexDir="column" justifyContent="center" pl="2">
+              <FormControl w="85%" ml="1.5" isRequired>
                 <Input
                   my="2"
                   onChange={(e) => {
                     setUserName(e.target.value)
                   }}
                   value={userName}
-                  mx="auto"
                   placeholder="Type name"
                 />
               </FormControl>
-              <FormControl mx="auto" w="80%" isRequired>
+              <FormControl ml="1.5" w="85%" isRequired>
                 <Input
                   my="2"
                   as="input"
@@ -92,7 +91,7 @@ export default function Footer() {
                   placeholder="Type email"
                 />
               </FormControl>
-              <FormControl mx="auto" w="95%" isRequired>
+              <FormControl ml="1.5" w="90%" isRequired>
                 <Textarea
                   my="2"
                   w="95%"
@@ -106,8 +105,8 @@ export default function Footer() {
               </FormControl>
               <Button
                 my="2"
-                w={['null', '60%']}
-                mx="auto"
+                w={['90%', '60%']}
+                ml="1.5"
                 type="submit"
                 variant="outline"
                 colorScheme="cyan"
@@ -195,7 +194,7 @@ export default function Footer() {
         display={['none', 'block']}
         fontWeight="bold"
         fontSize="larger"
-        bgGradient="linear(to-l,blue.300,blue.600)"
+        bgGradient="linear(to-l,blue.200,blue.500)"
         bgClip="text"
         textAlign="center"
         p="3"

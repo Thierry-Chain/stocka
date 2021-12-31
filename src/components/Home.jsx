@@ -68,6 +68,7 @@ export default function Home() {
           width={[null, '50%']}
           bg="#9e9b9b34"
           rounded="md"
+          bgGradient="linear(to-t,#51505159,#fffdfde0)"
         >
           <Box mx="auto" my="2">
             <Text>

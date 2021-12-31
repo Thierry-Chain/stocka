@@ -28,7 +28,8 @@ function App() {
         <NavBar />
       </Flex>
       <Flex
-        bg="#e0dbdb83"
+        //bg="#e0dbdb83"
+        bgGradient="radial(#e0dbdb80,#e0dbdb83)"
         w={['100vw', '100vw', '75%']}
         h="auto"
         overflow="auto"
