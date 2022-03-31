@@ -29,14 +29,14 @@ export default function NavBar() {
   const dispatch = useDispatch()
   const loggedInOptions = (
     <React.Fragment>
-      <Flex py="2" _hover={{ bg: 'telegram.100', color: '#020201' }}>
-        <NavLink className="link" to="/loggedIn/pay">
+      <Flex py='2' _hover={{ bg: 'telegram.100', color: '#020201' }}>
+        <NavLink className='link' to='/loggedIn/pay'>
           {' '}
           <Icon
-            fontWeight="extrabold"
-            fontSize="xl"
+            fontWeight='extrabold'
+            fontSize='xl'
             as={AiOutlineMoneyCollect}
-            mr="2"
+            mr='2'
             display={['inline', 'none', 'inline']}
           />
           <Text display={['none', 'inline', 'inline']}>Payment</Text>
@@ -46,82 +46,82 @@ export default function NavBar() {
   )
   return (
     <Flex
-      align="baseline"
-      mx="auto"
-      color="telegram.400"
+      align='baseline'
+      mx='auto'
+      color='telegram.400'
       direction={['row', 'row', 'column']}
     >
-      <Flex my="2" ml="0.5" direction={['row', 'column']} py="1" mx="auto">
+      <Flex my='2' ml='0.5' direction={['row', 'column']} py='1' mx='auto'>
         <WrapItem display={['none', 'inline']}>
           <Avatar mt={[null, '-1.5', null]} src={logo} />
         </WrapItem>
         <Text
-          as="big"
-          bgGradient="linear(to-l,teal.100,blue.800)"
-          bgClip="text"
-          lineHeight="3"
-          letterSpacing="wide"
+          as='big'
+          bgGradient='linear(to-l,teal.100,blue.800)'
+          bgClip='text'
+          lineHeight='3'
+          letterSpacing='wide'
           display={['inline', 'none', 'inline']}
-          fontFamily="revert"
-          fontWeight="bold"
-          py="2"
-          my="1"
+          fontFamily='revert'
+          fontWeight='bold'
+          py='2'
+          my='1'
         >
           STOCK
         </Text>
         <Box
-          as="div"
+          as='div'
           display={['none', 'none', 'inline']}
-          p="0.5"
-          pb="0"
-          my="3"
-          h="0.5"
-          bg="telegram.300"
+          p='0.5'
+          pb='0'
+          my='3'
+          h='0.5'
+          bg='telegram.300'
         />
       </Flex>
 
       <Flex
         direction={['row', 'row', 'column']}
-        py="3"
-        justifyContent="space-around"
+        py='3'
+        justifyContent='space-around'
         mx={[null, 'auto', 'auto']}
-        fontWeight="bold"
+        fontWeight='bold'
       >
-        <Flex py="2" _hover={{ bg: 'telegram.100', color: '#020201' }}>
-          <NavLink className="link" to={auth ? '/loggedIn' : '/'}>
+        <Flex py='2' _hover={{ bg: 'telegram.100', color: '#020201' }}>
+          <NavLink className='link' to={auth ? '/loggedIn' : '/'}>
             {' '}
             <Icon
-              fontWeight="extrabold"
-              fontSize="xl"
+              fontWeight='extrabold'
+              fontSize='xl'
               as={AiTwotoneHome}
-              mr="2"
+              mr='2'
               display={['inline', 'none', 'inline']}
             />
             <Text display={['none', 'inline', 'inline']}>Home</Text>
           </NavLink>
         </Flex>
-        <Flex py="2" _hover={{ bg: 'telegram.100', color: '#020201' }}>
-          <NavLink className="link" to={auth ? '/loggedIn/stock' : '/login'}>
+        <Flex py='2' _hover={{ bg: 'telegram.100', color: '#020201' }}>
+          <NavLink className='link' to={auth ? '/loggedIn/stock' : '/login'}>
             <Icon
-              fontWeight="extrabold"
-              fontSize="xl"
+              fontWeight='extrabold'
+              fontSize='xl'
               as={!auth ? AiOutlineLogin : AiOutlineAppstoreAdd}
-              mr="2"
+              mr='2'
               display={['inline', 'none', 'inline']}
             />
             <Text display={['none', 'inline', 'inline']}>
-              {auth ? 'Stock' : 'Login'}
+              {auth ? 'Inventory' : 'Login'}
             </Text>
           </NavLink>
         </Flex>
-        <Flex py="2" _hover={{ bg: 'telegram.100', color: '#020201' }}>
-          <NavLink className="link" to={auth ? '/loggedIn/records' : 'signup'}>
+        <Flex py='2' _hover={{ bg: 'telegram.100', color: '#020201' }}>
+          <NavLink className='link' to={auth ? '/loggedIn/records' : 'signup'}>
             {' '}
             <Icon
-              fontWeight="extrabold"
-              fontSize="xl"
+              fontWeight='extrabold'
+              fontSize='xl'
               as={!auth ? AiOutlineUsergroupAdd : AiOutlineHistory}
-              mr="2"
+              mr='2'
               display={['inline', 'none', 'inline']}
             />
             <Text display={['none', 'inline', 'inline']}>
@@ -129,14 +129,14 @@ export default function NavBar() {
             </Text>
           </NavLink>
         </Flex>
-        <Flex py="2" _hover={{ bg: 'telegram.100', color: '#020201' }}>
-          <NavLink className="link" to={auth ? '/loggedIn/control' : 'about'}>
+        <Flex py='2' _hover={{ bg: 'telegram.100', color: '#020201' }}>
+          <NavLink className='link' to={auth ? '/loggedIn/control' : 'about'}>
             {' '}
             <Icon
-              fontWeight="extrabold"
-              fontSize="xl"
+              fontWeight='extrabold'
+              fontSize='xl'
               as={!auth ? AiFillTags : AiOutlineBarChart}
-              mr="2"
+              mr='2'
               display={['inline', 'none', 'inline']}
             />
             <Text display={['none', 'inline', 'inline']}>
@@ -150,9 +150,9 @@ export default function NavBar() {
       <Flex display={['none', 'none', 'inline']} my={[null, '1', '2']}>
         <NavLink to={auth ? '/' : '/signup'}>
           <Button
-            rightIcon={<AiOutlineLogout fontWeight="bold" />}
-            colorScheme="teal"
-            variant="outline"
+            rightIcon={<AiOutlineLogout fontWeight='bold' />}
+            colorScheme='teal'
+            variant='outline'
             onClick={() => dispatch(logout())}
           >
             {auth ? 'Logout' : 'Go Now'}
