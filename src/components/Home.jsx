@@ -8,27 +8,29 @@ import {
   Image,
   Alert,
   AlertIcon,
-} from '@chakra-ui/react'
-import { BellIcon, QuestionIcon, AddIcon, InfoIcon } from '@chakra-ui/icons'
-import crossImage from 'assets/responsive.jpg'
-import stock1 from 'assets/stock1.jpg'
-import stock2 from 'assets/stock2.jpg'
-import Footer from './Footer'
+  Heading,
+} from '@chakra-ui/react';
+import { BellIcon, QuestionIcon, AddIcon, InfoIcon } from '@chakra-ui/icons';
+import crossImage from 'assets/responsive.jpg';
+import stock1 from 'assets/stock1.jpg';
+import stock2 from 'assets/stock2.jpg';
+import Footer from './Footer';
 
 export default function Home() {
   return (
     <Container minW="full" pl="0" pr="0">
-      <Text
+      <Heading
         fontWeight="bold"
-        fontSize="larger"
-        bgGradient="linear(to-l,blue.300,blue.800)"
+        bgGradient="linear(to-l,blue.400,blue.900)"
         bgClip="text"
         textAlign="center"
-        p="3"
+        px="3"
+        pt="10"
+        size="xl"
       >
         Stock Management System
-      </Text>
-      <Box color="blue.900" rounded="xl" shadow="xl" m="4" p="3">
+      </Heading>
+      <Box opacity="0.6" color="blue.900" rounded="xl" shadow="xl" m="4" pb="3">
         <Text
           textAlign="center"
           fontSize="md"
@@ -36,66 +38,76 @@ export default function Home() {
           lineHeight="2"
         >
           <BellIcon color="blue.500" mx="2" fontSize="3xl" />
-          Hey , welcome we helps you to manage your stock of goods in smart way
-          and it has cross support in devices{' '}
+          Hey , We helps you to manage your stock in smart way and we help you
+          business to grow rapidly also at cross platforms .{' '}
         </Text>
       </Box>
       <Box m="0" p="0" minW="full">
-        <Image h="inherit" minW="full" w="inherit" src={crossImage} />
+        <Image
+          opacity="0.75"
+          h="inherit"
+          minW="full"
+          w="inherit"
+          src={crossImage}
+        />
       </Box>
       <Flex flexDir="column">
-        <Text
+        <Box h="70vh" my="auto" py="auto">
+          <Heading
+            textAlign="center"
+            size="lg"
+            fontWeight="extrabold"
+            lineHeight="3"
+            color="blue.700"
+            m="4"
+            py="16"
+            mx="auto"
+          >
+            <QuestionIcon color="pink.400" mx="2" fontSize="3xl" /> Who uses
+            this application :
+          </Heading>
+          <VStack
+            fontSize="md"
+            fontWeight="semibold"
+            lineHeight="2"
+            color="blue.600"
+            mx="auto"
+            px="3"
+            shadow="2xl"
+            width={[null, '50%']}
+            bg="#9e9b9b34"
+            rounded="md"
+            bgGradient="linear(to-t,#51505159,#fffdfde0)"
+          >
+            <Box mx="auto" my="2">
+              <Text p="3">
+                <AddIcon color="blue.700" mx="2" fontSize="md" /> Every
+                wholesale
+              </Text>
+              <Text p="3">
+                <AddIcon color="blue.700" mx="2" fontSize="md" /> Every Retail
+                saler
+              </Text>
+              <Text p="3">
+                <AddIcon color="blue.700" mx="2" fontSize="md" /> Every
+                Accountant
+              </Text>
+            </Box>
+          </VStack>
+        </Box>
+        <Heading
           textAlign="center"
-          fontSize="md"
+          size="lg"
+          py="16"
           fontWeight="extrabold"
           lineHeight="3"
           color="blue.700"
           m="4"
-          p="2"
-          mx="auto"
-        >
-          <QuestionIcon color="pink.400" mx="2" fontSize="3xl" /> Who uses this
-          application :
-        </Text>
-        <VStack
-          fontSize="md"
-          fontWeight="semibold"
-          lineHeight="2"
-          color="blue.600"
-          mx="auto"
-          px="3"
-          shadow="2xl"
-          width={[null, '50%']}
-          bg="#9e9b9b34"
-          rounded="md"
-          bgGradient="linear(to-t,#51505159,#fffdfde0)"
-        >
-          <Box mx="auto" my="2">
-            <Text>
-              <AddIcon color="blue.700" mx="2" fontSize="md" /> Every wholesale
-            </Text>
-            <Text>
-              <AddIcon color="blue.700" mx="2" fontSize="md" /> Every Retail
-              saler
-            </Text>
-            <Text>
-              <AddIcon color="blue.700" mx="2" fontSize="md" /> Every Accountant
-            </Text>
-          </Box>
-        </VStack>
-        <Text
-          textAlign="center"
-          fontSize="md"
-          fontWeight="extrabold"
-          lineHeight="3"
-          color="blue.700"
-          m="4"
-          p="2"
           mx="auto"
         >
           <InfoIcon color="pink.400" mx="2" fontSize="3xl" /> Some of stocks we
           manage :
-        </Text>
+        </Heading>
 
         <SimpleGrid py={['0.5', '2']} columns={[1, 2]} spacing={[1, 3]}>
           <Image
@@ -116,40 +128,95 @@ export default function Home() {
         </SimpleGrid>
       </Flex>
       <Box>
-        <Text
+        <Heading
           textAlign="center"
-          fontSize="md"
+          size="lg"
+          py="12"
           fontWeight="extrabold"
           lineHeight="3"
           color="blue.700"
           m="4"
-          p="2"
           mx="auto"
         >
           <InfoIcon color="pink.400" mx="2" fontSize="3xl" /> What legends said
           :
-        </Text>
+        </Heading>
 
-        <Box mx="2" fontWeight="semibold" fontSize="large">
-          <Alert my="5" shadow="lg" bg="#9e9b9b34" variant="left-accent">
-            <AlertIcon />
-            “One of the great responsibilities that I have is to manage my
-            assets wisely, so that they create value.” By Alice Walton
+        <SimpleGrid
+          mx="2"
+          fontWeight="semibold"
+          fontSize="large"
+          py="2"
+          gap="6"
+          columns={[1, 2]}
+        >
+          <Alert
+            py="3"
+            h="30vh"
+            roundedRight="2xl"
+            my="5"
+            shadow="lg"
+            bg="#9e9b9b34"
+            variant="left-accent"
+            flexDir="column"
+            justifyContent="center"
+          >
+            <Flex>
+              <AlertIcon my="auto" />
+              “One of the great responsibilities that I have is to manage my
+              assets wisely, so that they create value.”
+            </Flex>
+            <Text opacity="0.5" p="1">
+              {' '}
+              By Alice Walton
+            </Text>
           </Alert>
-
-          <Alert my="5" shadow="lg" bg="#9e9b9b34" variant="left-accent">
-            <AlertIcon /> “Know what you own, and know why you own it.” By Peter
-            Lynch
+          <Alert
+            py="3"
+            h="30vh"
+            roundedRight="2xl"
+            my="5"
+            shadow="lg"
+            bg="#9e9b9b34"
+            variant="left-accent"
+            flexDir="column"
+            justifyContent="center"
+          >
+            <Flex>
+              <AlertIcon my="auto" />
+              “Know what you own, and know why you own it.”
+            </Flex>
+            <Text opacity="0.5" p="1">
+              {' '}
+              By Peter Lynch
+            </Text>
           </Alert>
-          <Alert my="5" shadow="lg" bg="#9e9b9b34" variant="left-accent">
-            <AlertIcon /> “Observe your information and make right decision.” By
-            Peter Lynch
+          <Alert
+            py="3"
+            h="30vh"
+            roundedRight="2xl"
+            my="5"
+            shadow="lg"
+            bg="#9e9b9b34"
+            variant="left-accent"
+            flexDir="column"
+            justifyContent="center"
+          >
+            <Flex>
+              <AlertIcon my="auto" />
+              “Observe your information and make right decision.”
+            </Flex>
+            <Text opacity="0.5" p="1">
+              {' '}
+              By Peter Lynch
+            </Text>
           </Alert>
-        </Box>
+        </SimpleGrid>
       </Box>
-      <Text
+      <Heading
         fontWeight="bold"
-        fontSize="larger"
+        size="lg"
+        py="12"
         bgGradient="linear(to-l,cyan.400,blue.900)"
         bgClip="text"
         textShadow="dark-lg"
@@ -157,8 +224,8 @@ export default function Home() {
         p="3"
       >
         <BellIcon color="blue.900" mx="2" fontSize="3xl" /> Terms and services
-      </Text>
+      </Heading>
       <Footer />
     </Container>
-  )
+  );
 }
