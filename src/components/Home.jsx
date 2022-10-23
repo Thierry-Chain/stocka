@@ -19,29 +19,38 @@ import Footer from './Footer';
 export default function Home() {
   return (
     <Container minW="full" pl="0" pr="0">
-      <Heading
-        fontWeight="bold"
-        bgGradient="linear(to-l,blue.400,blue.900)"
-        bgClip="text"
-        textAlign="center"
-        px="3"
-        pt="10"
-        size="xl"
-      >
-        Stock Management System
-      </Heading>
-      <Box opacity="0.6" color="blue.900" rounded="xl" shadow="xl" m="4" pb="3">
-        <Text
+      <Flex flexDir="column" h="40vh">
+        <Heading
+          fontWeight="bold"
+          bgGradient="linear(to-l,blue.400,blue.900)"
+          bgClip="text"
           textAlign="center"
-          fontSize="md"
-          fontWeight="semibold"
-          lineHeight="2"
+          px="3"
+          pt="10"
+          size="xl"
         >
-          <BellIcon color="blue.500" mx="2" fontSize="3xl" />
-          Hey , We helps you to manage your stock in smart way and we help you
-          business to grow rapidly also at cross platforms .{' '}
-        </Text>
-      </Box>
+          Stock Management System
+        </Heading>
+        <Box
+          opacity="0.6"
+          color="blue.900"
+          rounded="xl"
+          shadow="xl"
+          m="4"
+          py="6"
+        >
+          <Text
+            textAlign="center"
+            fontSize="md"
+            fontWeight="semibold"
+            lineHeight="2"
+          >
+            <BellIcon color="blue.500" mx="2" fontSize="3xl" />
+            Hey , We helps you to manage your stock in smart way and we help you
+            business to grow rapidly also at cross platforms .{' '}
+          </Text>
+        </Box>
+      </Flex>
       <Box m="0" p="0" minW="full">
         <Image
           opacity="0.75"
