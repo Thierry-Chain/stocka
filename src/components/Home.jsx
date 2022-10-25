@@ -9,17 +9,25 @@ import {
   Alert,
   AlertIcon,
   Heading,
+  Button,
 } from '@chakra-ui/react';
-import { BellIcon, QuestionIcon, AddIcon, InfoIcon } from '@chakra-ui/icons';
+import {
+  BellIcon,
+  QuestionIcon,
+  AddIcon,
+  InfoIcon,
+  ViewIcon,
+} from '@chakra-ui/icons';
 import crossImage from 'assets/responsive.jpg';
 import stock1 from 'assets/stock1.jpg';
 import stock2 from 'assets/stock2.jpg';
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   return (
     <Container minW="full" pl="0" pr="0">
-      <Flex flexDir="column" h="40vh">
+      <Flex flexDir="column">
         <Heading
           fontWeight="bold"
           bgGradient="linear(to-l,blue.400,blue.900)"
@@ -41,7 +49,7 @@ export default function Home() {
         >
           <Text
             textAlign="center"
-            fontSize="md"
+            fontSize={['sm']}
             fontWeight="semibold"
             lineHeight="2"
           >
@@ -51,7 +59,43 @@ export default function Home() {
           </Text>
         </Box>
       </Flex>
-      <Flex>here we go text</Flex>
+      <Flex p="2" flexDir="column">
+        <Box
+          bg="#e4e3e3"
+          border="2px"
+          h="120px"
+          rounded="xl"
+          shadow="xl"
+          m="4"
+          p="3"
+          opacity="0.9"
+          borderColor="gray.300"
+          color="blue.900"
+          w={['90%', '60%']}
+        >
+          <Text mt="4" fontSize={['sm', 'lg']} fontWeight="semibold">
+            <b>Join us for free</b> , More users have started to enjoy our
+            services <b>click</b> get started .
+          </Text>
+        </Box>
+        <Link to="/login">
+          <Button
+            bg="#3983c4"
+            color="white"
+            size={['md']}
+            px="1.5"
+            mx="4"
+            w={['40%', '25%']}
+            my="2"
+            py="6"
+            _hover={{ color: 'white', bg: '#47a9da' }}
+            fontSize="larger"
+          >
+            <ViewIcon mx="2" fontSize="3xl" />
+            Get started
+          </Button>
+        </Link>
+      </Flex>
       <Box m="0" p="0" minW="full">
         <Image
           opacity="0.75"
