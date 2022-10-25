@@ -51,6 +51,7 @@ export default function Home() {
           </Text>
         </Box>
       </Flex>
+      <Flex>here we go text</Flex>
       <Box m="0" p="0" minW="full">
         <Image
           opacity="0.75"
@@ -82,11 +83,12 @@ export default function Home() {
             color="blue.600"
             mx="auto"
             px="3"
-            shadow="2xl"
+            shadow="xl"
             width={[null, '50%']}
             bg="#9e9b9b34"
             rounded="md"
-            bgGradient="linear(to-t,#51505159,#fffdfde0)"
+            bgGradient="linear(to-t,#cdcccd,#fffdfde0)"
+            opacity="0.8"
           >
             <Box mx="auto" my="2">
               <Text p="3">
