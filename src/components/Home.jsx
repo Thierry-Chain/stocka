@@ -59,11 +59,11 @@ export default function Home() {
           </Text>
         </Box>
       </Flex>
-      <Flex p="2" flexDir="column">
+      <Flex p="2">
         <Box
           bg="#e4e3e3"
           border="2px"
-          h="120px"
+          h={['250px', '220px', '250px']}
           rounded="xl"
           shadow="xl"
           m="4"
@@ -71,30 +71,32 @@ export default function Home() {
           opacity="0.9"
           borderColor="gray.300"
           color="blue.900"
-          w={['90%', '60%']}
+          w={['90%', '85%', '60%']}
         >
           <Text mt="4" fontSize={['sm', 'lg']} fontWeight="semibold">
             <b>Join us for free</b> , More users have started to enjoy our
-            services <b>click</b> get started .
+            services <b>click</b> get started right now.
+            <br /> Our greatest aim is our <b>customers satisfication</b> at
+            every level
           </Text>
+
+          <Link to="/login">
+            <Button
+              bg="#3983c4"
+              color="white"
+              size={['md']}
+              px="2"
+              wxh={['80%', '40%', '30%']}
+              mt="6"
+              py={['4', '6']}
+              _hover={{ color: 'white', bg: '#47a9da' }}
+              fontSize={['sm', 'md', 'larger']}
+            >
+              <ViewIcon mx="2" fontSize="3xl" />
+              Get started
+            </Button>
+          </Link>
         </Box>
-        <Link to="/login">
-          <Button
-            bg="#3983c4"
-            color="white"
-            size={['md']}
-            px="1.5"
-            mx="4"
-            w={['40%', '25%']}
-            my="2"
-            py="6"
-            _hover={{ color: 'white', bg: '#47a9da' }}
-            fontSize="larger"
-          >
-            <ViewIcon mx="2" fontSize="3xl" />
-            Get started
-          </Button>
-        </Link>
       </Flex>
       <Box m="0" p="0" minW="full">
         <Image
