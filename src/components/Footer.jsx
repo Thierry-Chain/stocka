@@ -11,11 +11,11 @@ import {
   Icon,
   Textarea,
   Button,
-} from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
-import { ExternalLinkIcon, EmailIcon } from '@chakra-ui/icons'
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+} from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+import { ExternalLinkIcon, EmailIcon } from '@chakra-ui/icons';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   AiFillGithub,
   AiOutlineLogin,
@@ -27,18 +27,18 @@ import {
   AiFillCopyrightCircle,
   AiOutlineMoneyCollect,
   AiOutlineTwitter,
-} from 'react-icons/ai'
+} from 'react-icons/ai';
 export default function Footer() {
-  const [email, setEmail] = useState('')
-  const [userName, setUserName] = useState('')
-  const [message, setMessage] = useState('')
-  const auth = useSelector((state) => state.user.auth)
-  const date = new Date()
+  const [email, setEmail] = useState('');
+  const [userName, setUserName] = useState('');
+  const [message, setMessage] = useState('');
+  const auth = useSelector((state) => state.user.auth);
+  const date = new Date();
   const handleSubmit = (e) => {
-    e.preventDefault()
-    alert(email + userName + message)
-  }
-  const year = date.getFullYear()
+    e.preventDefault();
+    alert(email + userName + message);
+  };
+  const year = date.getFullYear();
   return (
     <Box as="footer" bg="#020202e8" h="auto" py="4">
       <Text
@@ -63,7 +63,7 @@ export default function Footer() {
           border="honeydew"
           borderRight="2px"
         >
-          <Text mx="auto" textAlign="center">
+          <Text ml="5" textAlign="left">
             Send Feedback/Advice
           </Text>
           <form onSubmit={handleSubmit}>
@@ -72,7 +72,7 @@ export default function Footer() {
                 <Input
                   my="2"
                   onChange={(e) => {
-                    setUserName(e.target.value)
+                    setUserName(e.target.value);
                   }}
                   value={userName}
                   placeholder="Type name"
@@ -85,7 +85,7 @@ export default function Footer() {
                   mx="auto"
                   value={email}
                   onChange={(e) => {
-                    setEmail(e.target.value)
+                    setEmail(e.target.value);
                   }}
                   type="email"
                   placeholder="Type email"
@@ -97,7 +97,7 @@ export default function Footer() {
                   w="95%"
                   value={message}
                   onChange={(e) => {
-                    setMessage(e.target.value)
+                    setMessage(e.target.value);
                   }}
                   mx="auto"
                   placeholder="Type your message here"
@@ -190,7 +190,7 @@ export default function Footer() {
           </Text>
         </Flex>
       </SimpleGrid>
-      <Text
+      <Box
         display={['none', 'block']}
         fontWeight="bold"
         fontSize="larger"
@@ -199,8 +199,8 @@ export default function Footer() {
         textAlign="center"
         p="3"
       >
-        Call for support (+250784405833)
-      </Text>
+        <Text>Call / Whatsapp for support</Text> (+250784405833)
+      </Box>
     </Box>
-  )
+  );
 }

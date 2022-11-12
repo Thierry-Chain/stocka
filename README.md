@@ -18,3 +18,6 @@ It helps to manage larger / smaller stock of goods(goods are classified into two
 
 when you have entererd data over acertain period of time it shows you how much you have
 `earned` or `lost` by showing you your profit and loss `also` it shows other important result that can help you in planning and decision making
+
+### Updates
+Version 2 of the user interface was started on 23/10/2022
