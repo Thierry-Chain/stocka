@@ -135,6 +135,8 @@ export default function Footer() {
             <VStack ml="auto" mr="2">
               <Link to={auth ? '/loggedIn/stock' : '/login'}>
                 <Icon
+                  mb="-1"
+                  mx="1"
                   fontWeight="extrabold"
                   fontSize="xl"
                   as={auth ? AiOutlineAppstoreAdd : AiOutlineLogin}
@@ -143,6 +145,8 @@ export default function Footer() {
               </Link>
               <Link to={auth ? '/loggedIn/records' : '/signup'}>
                 <Icon
+                  mb="-1"
+                  mx="1"
                   fontWeight="extrabold"
                   fontSize="xl"
                   as={auth ? AiOutlineHistory : AiOutlineUsergroupAdd}
@@ -151,6 +155,8 @@ export default function Footer() {
               </Link>
               <Link to={auth ? '/loggedIn/pay' : '/about'}>
                 <Icon
+                  mb="-1"
+                  mx="1"
                   fontWeight="extrabold"
                   fontSize="xl"
                   as={auth ? AiOutlineMoneyCollect : AiFillTags}
@@ -162,11 +168,23 @@ export default function Footer() {
 
             <VStack mr="auto" ml="2">
               <ChakraLink href="https://github.com/Thierry-Chain" isExternal>
-                <Icon fontWeight="extrabold" fontSize="xl" as={AiFillGithub} />
+                <Icon
+                  mb="-1"
+                  mx="1"
+                  fontWeight="extrabold"
+                  fontSize="xl"
+                  as={AiFillGithub}
+                />
                 Github
               </ChakraLink>
               <ChakraLink href="/email" isExternal>
-                <Icon fontWeight="extrabold" fontSize="xl" as={AiOutlineMail} />
+                <Icon
+                  mb="-1"
+                  mx="1"
+                  fontWeight="extrabold"
+                  fontSize="xl"
+                  as={AiOutlineMail}
+                />
                 Email
               </ChakraLink>
               <ChakraLink href="https://twitter/Thierry-Chain" isExternal>
@@ -174,6 +192,8 @@ export default function Footer() {
                   fontWeight="extrabold"
                   fontSize="xl"
                   as={AiOutlineTwitter}
+                  mb="-1"
+                  mx="1"
                 />
                 Twitter
               </ChakraLink>
@@ -185,6 +205,8 @@ export default function Footer() {
               fontWeight="extrabold"
               fontSize="xl"
               as={AiFillCopyrightCircle}
+              mb="-1"
+              mx="1"
             />
             Copyright from 2021-{year}
           </Text>
