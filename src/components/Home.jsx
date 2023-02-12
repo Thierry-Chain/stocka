@@ -63,7 +63,7 @@ export default function Home() {
         <Box
           bg="#e4e3e3"
           border="2px"
-          h={['250px', '220px', '250px']}
+          h={['270px', '260px', '300px']}
           rounded="xl"
           shadow="xl"
           m="4"
@@ -71,6 +71,7 @@ export default function Home() {
           opacity="0.9"
           borderColor="gray.300"
           color="blue.900"
+          py="auto"
           w={['90%', '85%', '60%']}
         >
           <Text mt="4" fontSize={['sm', 'lg']} fontWeight="semibold">

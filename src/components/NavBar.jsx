@@ -30,7 +30,7 @@ export default function NavBar() {
   const dispatch = useDispatch();
   const loggedInOptions = (
     <React.Fragment>
-      <Flex p="2" _hover={{ bg: 'telegram.100', color: '#020201' }}>
+      <Flex p="2" _hover={{ bg: 'telegram.50', color: '#020201' }}>
         <NavLink className="link" to="/loggedIn/pay">
           {' '}
           <Icon
@@ -51,10 +51,11 @@ export default function NavBar() {
       mx="auto"
       color="telegram.400"
       flexDir={['row', 'row', 'column']}
+      pt={[null, '3', null]}
     >
       <Flex my="2" justifyContent="center" flexDir={['row']} ml="0.5">
         <WrapItem px="2" display={['none', 'inline']}>
-          <Avatar mt={[null, '1.5', null]} src={logo} />
+          <Avatar mt={[null, '-3', null]} src={logo} />
         </WrapItem>
         <Heading
           as="big"
@@ -68,13 +69,14 @@ export default function NavBar() {
           py="2"
           size={['sm', 'sm', 'xl']}
           my="1"
+          mt={[null, '-3', null]}
           px="4"
         >
-          STOCK
+          STOCKA
         </Heading>
         <Box
           as="div"
-          display={['none', 'none', 'inline']}
+          display={['none', 'none', 'none']}
           p="0.5"
           pb="0"
           my="3"
@@ -93,7 +95,7 @@ export default function NavBar() {
         <Flex
           px={['2', '4']}
           py="2"
-          _hover={{ bg: 'telegram.100', color: '#020201' }}
+          _hover={{ bg: 'telegram.50', color: '#020201' }}
         >
           <NavLink className="link" to={auth ? '/loggedIn' : '/'}>
             {' '}
@@ -110,7 +112,7 @@ export default function NavBar() {
         <Flex
           px={['2', '4']}
           py="2"
-          _hover={{ bg: 'telegram.100', color: '#020201' }}
+          _hover={{ bg: 'telegram.50', color: '#020201' }}
         >
           <NavLink className="link" to={auth ? '/loggedIn/stock' : '/login'}>
             <Icon
@@ -128,7 +130,7 @@ export default function NavBar() {
         <Flex
           px={['2', '4']}
           py="2"
-          _hover={{ bg: 'telegram.100', color: '#020201' }}
+          _hover={{ bg: 'telegram.50', color: '#020201' }}
         >
           <NavLink className="link" to={auth ? '/loggedIn/records' : 'signup'}>
             {' '}
@@ -147,7 +149,7 @@ export default function NavBar() {
         <Flex
           px={['2', '4']}
           py="2"
-          _hover={{ bg: 'telegram.100', color: '#020201' }}
+          _hover={{ bg: 'telegram.50', color: '#020201' }}
         >
           <NavLink className="link" to={auth ? '/loggedIn/control' : 'about'}>
             {' '}
