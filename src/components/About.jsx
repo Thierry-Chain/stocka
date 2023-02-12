@@ -60,20 +60,16 @@ export default function About() {
         Recent Works
       </Heading>
 
-      <Box pb="4rem">
+      <Box ml={['5rem', null, null]} pb="4rem">
         <SimpleGrid columns={['1', '2', '3']} spacing={['1', '5']}>
-          <Link
-            mx="auto"
-            isExternal
-            href="https://smart-library-rw.herokuapp.com"
-          >
-            <Image h="250px" src={library} />
+          <Link isExternal href="https://smart-library-rw.herokuapp.com">
+            <Image h="270px" w="270px" src={library} />
           </Link>
-          <Link mx="auto" isExternal href="https://stflibrary.herokuapp.com">
-            <Image h="250px" src={library} />
+          <Link isExternal href="https://stflibrary.herokuapp.com">
+            <Image h="270px" w="270px" src={library} />
           </Link>
-          <Link px="auto" href="https://github.com/thierry-Chain" isExternal>
-            <Image px="auto" h="250px" src={other} />
+          <Link href="https://github.com/thierry-Chain" isExternal>
+            <Image h="270px" w="270px" src={other} />
           </Link>
         </SimpleGrid>
       </Box>
